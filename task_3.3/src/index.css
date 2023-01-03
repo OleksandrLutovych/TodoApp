@@ -11,6 +11,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+<<<<<<< HEAD
 h2 {
   font-size: 2rem;
     text-align: center;
@@ -43,3 +44,15 @@ a:hover {
   text-decoration: underline;
 }
 
+=======
+
+.px1 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.group {
+  display: flex;
+  justify-content: space-between;
+}
+>>>>>>> b25a1cb6e331f9b1591af800d036fffa0791e7b8
