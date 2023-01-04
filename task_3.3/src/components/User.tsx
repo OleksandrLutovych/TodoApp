@@ -1,6 +1,12 @@
 import React from "react";
+import { IUser } from "../types/usersTypes";
+import { users } from "./Users";
 
-const User = () => {
+interface IUserProps {
+  user: IUser;
+}
+
+const User = ({ user }: IUserProps) => {
   return (
     <div>
       <img
@@ -9,8 +15,10 @@ const User = () => {
         alt=""
       />
       <div className="">
-        <p className="">Fake Fake</p>
-        <p className="">fakeemail@com.</p>
+        <p className="">{user.id}</p>
+        <p className="">{user.name}</p>
+        <p className="">{user.username}</p>
+        <p className="">{user.email}</p>
       </div>
     </div>
   );

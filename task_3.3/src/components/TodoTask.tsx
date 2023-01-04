@@ -2,12 +2,16 @@ import React from "react";
 import Button from "./UI/Button";
 import classes from "./Todo.module.css";
 
-const TodoTask = () => {
+export interface IProps {
+  children: React.ReactNode
+}
+
+const TodoTask = ({children}: IProps) => {
   return (
     <div className={classes.task}>
       <div>
         <input type="radio" />
-        <span>s</span>
+        <span>{children}</span>
       </div>
       
       <div>

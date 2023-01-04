@@ -17,27 +17,23 @@ const Todo = () => {
         <input
           type="text"
           placeholder="Create task"
-          id="input"
-          name="todoText"
           className={classes.input}
         />
         <div>
-          <button
-            onClick={(e) => {
-              e.preventDefault()
+          <Button
+            onClick={(e: React.FormEvent) => {
+              e.preventDefault();
               dispatch(addTodo([]));
             }}
           >
-            test
-          </button>
-          <Button disabled>Create task</Button>
-          <Button>Edit</Button>
+            Create task
+          </Button>
         </div>
       </form>
       <div className="todo-container" id="todo-container">
-        <TodoTask />
-        <TodoTask />
-        <TodoTask />
+        {todo.map((item, index) => (
+          <TodoTask key={index}>{item}</TodoTask>
+        ))}
       </div>
       <Button>Clear Items</Button>
     </div>
