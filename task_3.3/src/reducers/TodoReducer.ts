@@ -13,8 +13,10 @@ export const todoSlice = createSlice({
   name: 'todo',
   initialState,
   reducers: {
-    addTodo:  (state, actions) => {
-      state.todo.push('new element')
+    addTodo:  (state, action) => {
+      console.log(action.payload)
+
+      state.todo.push('new element' + action.payload.text)
     },
     removeTodo:  (state, actions) => {
       
