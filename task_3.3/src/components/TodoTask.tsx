@@ -3,20 +3,21 @@ import Button from "./UI/Button";
 import classes from "./Todo.module.css";
 
 export interface IProps {
-  children: React.ReactNode
+  children: React.ReactNode;
+  checked: any
 }
 
-const TodoTask = ({children}: IProps) => {
+const TodoTask = (props: IProps ) => {
   return (
     <div className={classes.task}>
       <div>
-        <input type="radio" />
-        <span>{children}</span>
+        <input type="radio" checked={props.checked} />
+        <span>{props.children}</span>
       </div>
-      
+
       <div>
         <Button>Edit</Button>
-        <Button>✕</Button>
+        <button style={{}}>🗑</button>
       </div>
     </div>
   );

@@ -1,8 +1,4 @@
-import React from "react";
-import { Route, Routes, Link } from "react-router-dom";
-import UsersList from "./UsersList";
-import PostsList from "./PostsList";
-import TodoLists from "./TodoLists";
+import { Link } from "react-router-dom";
 
 const Navigation = () => {
   return (
@@ -22,11 +18,6 @@ const Navigation = () => {
           </ul>
         </nav>
       </header>
-      <Routes>
-        <Route path="/posts" element={<PostsList />} />
-        <Route path="/userslist" element={<UsersList />} />
-        <Route path="/todo" element={<TodoLists />} />
-      </Routes>
     </>
   );
 };

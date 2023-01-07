@@ -1,15 +1,27 @@
-import React from "react";
 import User from "../components/User";
-import { users } from "../components/Users";
-import classes from "./UsersList.module.css";
+import { useEffect } from "react";
+import { IUser } from "../types/usersTypes";
+import { useAppDispatch, useAppSelector } from "../reducers/hook";
+import { fetchUsers } from "../reducers/UsersReducer";
 
-function UsersList() {
+const UsersList = () => {
+  const dispatch = useAppDispatch();
+  const users = useAppSelector((state) => state.users.users);
+
+  useEffect(() => {
+    dispatch(fetchUsers());
+  }, [dispatch]);
+
   return (
     <div className="container">
       <h2>Users</h2>
-      {users.map(user =><User user={user} key={user.id}/> )}
+      <div>
+        {users.map((user: IUser) => (
+          <User user={user} key={user.id} />
+        ))}
+      </div>
     </div>
   );
-}
+};
 
 export default UsersList;

@@ -1,14 +1,18 @@
-import React from "react";
-import TodoTask from "./TodoTask";
-import Button from "./UI/Button";
-import classes from "./Todo.module.css";
+import React, { useEffect } from "react";
+import TodoTask from "../components/TodoTask";
+import Button from "../components/UI/Button";
+import classes from "../components/Todo.module.css";
 import { useAppSelector, useAppDispatch } from "../reducers/hook";
-import { addTodo } from "../reducers/TodoReducer";
+import { addTodo, fetchTodos } from "../reducers/TodoReducer";
 
 const Todo = () => {
   const todo = useAppSelector((state) => state.todo.todo);
   const dispatch = useAppDispatch();
   console.log(todo);
+
+  useEffect(() => {
+    dispatch(fetchTodos());
+  }, [dispatch]);
 
   return (
     <div className="container">
@@ -31,8 +35,13 @@ const Todo = () => {
         </div>
       </form>
       <div className="todo-container" id="todo-container">
-        {todo.map((item, index) => (
-          <TodoTask key={index}>{item}</TodoTask>
+        {todo.map((item) => (
+          <TodoTask
+            key={item.id}
+            checked={item.completed && true}
+          >
+            {item.title}
+          </TodoTask>
         ))}
       </div>
       <Button>Clear Items</Button>
