@@ -17,7 +17,7 @@ const TodoTask = (props: IProps ) => {
 
       <div>
         <Button>Edit</Button>
-        <button style={{}}>🗑</button>
+        <button style={{}}>🗑</button> 
       </div>
     </div>
   );
