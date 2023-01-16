@@ -23,6 +23,7 @@ const Todo = () => {
           type="text"
           placeholder="Create task"
           className={classes.input}
+          onChange={(e) => {console.log(e.target.value)}}
         />
         <div>
           <Button

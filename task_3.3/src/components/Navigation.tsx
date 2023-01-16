@@ -29,6 +29,7 @@ const Navigation = () => {
                 type="search"
                 placeholder="Search..."
                 className={classes.inputSearch}
+                onChange={(e)=> { console.log(e.target.value)}}
               />
               <button className="btn">☾</button>
             </div>
