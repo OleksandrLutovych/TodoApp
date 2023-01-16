@@ -10,8 +10,7 @@ const PostsList = () => {
 
   useEffect(() => {
     dispatch(fetchPosts());
-    console.log(posts)
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="container">

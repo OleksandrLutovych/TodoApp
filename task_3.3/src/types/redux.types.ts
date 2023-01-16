@@ -1,13 +1,13 @@
 import { IPost } from "./postsType";
 import { IUser } from "./usersTypes";
 
-export type InsideTodo = {
+export type ITodo = {
   id: string;
   title: string;
   completed: boolean;
 };
 export interface ItodoState {
-  todo: Array<InsideTodo>;
+  todo: Array<ITodo>;
 }
 
 export interface IPostsState {
@@ -16,4 +16,5 @@ export interface IPostsState {
 
 export interface IUsersState {
   users: Array<IUser>;
+  error: string | any
 }

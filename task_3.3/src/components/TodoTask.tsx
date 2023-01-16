@@ -10,14 +10,14 @@ export interface IProps {
 const TodoTask = (props: IProps ) => {
   return (
     <div className={classes.task}>
-      <div>
+      <div className="menu1">
         <input type="radio" checked={props.checked} />
         <span>{props.children}</span>
       </div>
 
-      <div>
+      <div className="menu1">
         <Button>Edit</Button>
-        <button style={{}}>🗑</button>
+        <button className="btn" style={{color: 'red'}}>🗑</button> 
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
 import { IPost } from "../types/postsType";
+import "./styles.scss";
 
 interface PostsProps {
   posts: IPost;
@@ -6,8 +7,8 @@ interface PostsProps {
 
 const Post = ({ posts }: PostsProps) => {
   return (
-    <div style={{ borderBottom: "1px solid rgb(173, 173, 173)" }}>
-      <div style={{ marginLeft: "10px" }}>
+    <div className="post-item">
+      <div className="post-item_content">
         <p className="">
           <b>Title: </b>
           {posts.title}
