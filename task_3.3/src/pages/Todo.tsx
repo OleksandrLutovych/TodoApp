@@ -1,47 +1,63 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import TodoTask from "../components/TodoTask";
 import Button from "../components/UI/Button";
-import classes from "../components/Todo.module.css";
+import classes from "../components/Todo.module.scss";
 import { useAppSelector, useAppDispatch } from "../reducers/hook";
-import { addTodo, fetchTodos } from "../reducers/TodoReducer";
+import { addTodo, fetchTodos, removeTodo } from "../reducers/TodoReducer";
+import { ITodoApi } from "../types/redux.types";
 
-
-const Todo = () => {
+const Todo: React.FC = () => {
   const todo = useAppSelector((state) => state.todo.todo);
   const dispatch = useAppDispatch();
-  console.log(todo);
+
+  const [todoText, setTodoText] = useState("");
 
   useEffect(() => {
     dispatch(fetchTodos());
   }, [dispatch]);
 
+  const deleteTodo = (id: string): void => {
+    const [todoTarget] = todo.filter((item) => item.id === id);
+    dispatch(removeTodo(todoTarget));
+  };
+
   return (
     <div className="container">
       <h2>Todo List</h2>
-      <form name="form" className={classes.form} id="form">
+      <form className={classes.form}>
         <input
           type="text"
           placeholder="Create task"
           className={classes.input}
-          onChange={(e) => {console.log(e.target.value)}}
+          value={todoText}
+          onChange={(e) => {
+            setTodoText(e.target.value);
+          }}
         />
         <div>
           <Button
             onClick={(e: React.FormEvent) => {
               e.preventDefault();
-              dispatch(addTodo([]));
+
+              dispatch(addTodo(todoText));
+              setTodoText("");
             }}
           >
             Create task
           </Button>
         </div>
       </form>
-      <div className="todo-container" id="todo-container">
+      <div className="todo-container">
         <h3>Tasks</h3>
-        {todo.map((item) => (
-          <TodoTask key={item.id} checked={item.completed && true}>
-            {item.title}
-          </TodoTask>
+        {todo.map((item: ITodoApi) => (
+          <TodoTask
+            key={item.id}
+            completed={item.completed && true}
+            title={item.title}
+            deleteTodo={deleteTodo}
+            id={item.id}
+            inputValue={item.title}
+          />
         ))}
       </div>
       <div
@@ -49,7 +65,7 @@ const Todo = () => {
           display: "flex",
           justifyContent: "space-between",
           borderTop: "1px solid rgb(173, 173, 173)",
-          alignItems: 'center'
+          alignItems: "center",
         }}
       >
         <p>{todo.length} items</p>

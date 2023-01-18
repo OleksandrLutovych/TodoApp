@@ -1,13 +1,14 @@
 import { IPost } from "./postsType";
 import { IUser } from "./usersTypes";
 
-export type ITodo = {
+export type ITodoApi = {
+  userId?: number,
   id: string;
   title: string;
   completed: boolean;
 };
-export interface ItodoState {
-  todo: Array<ITodo>;
+export interface ITodoState {
+  todo: Array<ITodoApi>;
 }
 
 export interface IPostsState {

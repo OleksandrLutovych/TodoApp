@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { IconHome } from "./UI/IconHome";
-import classes from "../components/Todo.module.css";
+import classes from "../components/Todo.module.scss";
 
 const Navigation = () => {
   return (
