@@ -3,7 +3,7 @@ import TodoTask from "../components/TodoTask";
 import Button from "../components/UI/Button";
 import classes from "../components/Todo.module.scss";
 import { useAppSelector, useAppDispatch } from "../reducers/hook";
-import { addTodo, editTodoState, fetchTodos, removeTodo } from "../reducers/TodoReducer";
+import { addTodo, editTodoState, fetchTodos } from "../reducers/TodoReducer";
 import { ITodoApi } from "../types/redux.types";
 
 const Todo: React.FC = () => {
@@ -16,16 +16,18 @@ const Todo: React.FC = () => {
     dispatch(fetchTodos());
   }, [dispatch]);
 
-  const deleteTodo = (id: string): void => {
-    const [todoTarget] = todo.filter((item) => item.id === id);
-    dispatch(removeTodo(todoTarget));
-  };
-  const setEditState = (id: string, text: string): void => {
-    const [todoTarget] = todo.filter((item) => item.id === id);
-    const editTodo = [text, todoTarget]
-    dispatch(editTodoState(editTodo))
-  }
+  const createTodo = (e: React.FormEvent) => {
+    e.preventDefault();
 
+    dispatch(addTodo(todoText));
+    setTodoText("");
+  };
+
+  const setEditState = (id: string, text: string): void => {
+    const [todoEditItem] = todo.filter((item) => item.id === id);
+    const editTodo = [text, todoEditItem];
+    dispatch(editTodoState(editTodo));
+  };
 
   return (
     <div className="container">
@@ -41,16 +43,7 @@ const Todo: React.FC = () => {
           }}
         />
         <div>
-          <Button
-            onClick={(e: React.FormEvent) => {
-              e.preventDefault();
-
-              dispatch(addTodo(todoText));
-              setTodoText("");
-            }}
-          >
-            Create task
-          </Button>
+          <Button onClick={createTodo}>Create task</Button>
         </div>
       </form>
       <div className="todo-container">
@@ -60,20 +53,12 @@ const Todo: React.FC = () => {
             key={item.id}
             completed={item.completed && true}
             title={item.title}
-            deleteTodo={deleteTodo}
             id={item.id}
             setEditState={setEditState}
           />
         ))}
       </div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          borderTop: "1px solid rgb(173, 173, 173)",
-          alignItems: "center",
-        }}
-      >
+      <div className={classes.todoFooter}>
         <p>{todo.length} items</p>
         <div>
           <button className={classes.btn}>All</button>

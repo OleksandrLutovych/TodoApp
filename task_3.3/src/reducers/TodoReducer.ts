@@ -34,10 +34,7 @@ export const todoSlice = createSlice({
       });
     },
     removeTodo: (state, action) => {
-      const newTodoArr = state.todo.filter(
-        (item) => item.id !== action.payload.id
-      );
-      state.todo = newTodoArr;
+      state.todo = state.todo.filter((item) => item.id !== action.payload.id);
     },
     editTodoState: (state, action) => {
       const [newText, todoItem] = action.payload;
@@ -46,8 +43,11 @@ export const todoSlice = createSlice({
       newTodoArr.title = newText;
     },
     completedTodo: (state, action) => {
-      
-    }
+      const [editTodo] = state.todo.filter(
+        (item) => item.id === action.payload.id
+      );
+      editTodo.completed = !editTodo.completed;
+    },
   },
   extraReducers(builder) {
     builder.addCase(fetchTodos.fulfilled, (state, action) => {
@@ -56,6 +56,7 @@ export const todoSlice = createSlice({
   },
 });
 
-export const { addTodo, removeTodo, editTodoState } = todoSlice.actions;
+export const { addTodo, removeTodo, editTodoState, completedTodo } =
+  todoSlice.actions;
 export const selectCount = (state: RootState) => state.todo;
 export default todoSlice.reducer;

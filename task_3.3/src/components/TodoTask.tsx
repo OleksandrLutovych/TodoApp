@@ -2,27 +2,27 @@ import Button from "./UI/Button";
 import classes from "./Todo.module.scss";
 import { ITodoApi } from "../types/redux.types";
 import React, { useState } from "react";
+import { useAppDispatch } from "../reducers/hook";
+import { removeTodo, completedTodo } from "../reducers/TodoReducer";
 
 export interface ITodoTaskProps extends ITodoApi {
-  deleteTodo: (id: string) => void;
   setEditState: (id: string, todoText: string) => void;
 }
 
 const TodoTask: React.FC<ITodoTaskProps> = (props): JSX.Element => {
-  const { deleteTodo, setEditState, id, completed, title } = props;
+  const { setEditState, id, completed, title } = props;
 
   const [isEdit, setIsEdit] = useState(false);
-  const [todoText, setTodoText] = useState(title);
-  // const [complete, setComplete] = useState(false);
+  const [todoEditText, setTodoEditText] = useState(title);
+  const dispatch = useAppDispatch();
 
   const editToggle = (e: React.FormEvent) => {
     e.preventDefault();
-
     setIsEdit((prev) => !prev);
   };
 
   const handleBtnClick = (e: React.FormEvent) => {
-    isEdit && setEditState(id, todoText);
+    isEdit && setEditState(id, todoEditText);
     editToggle(e);
   };
 
@@ -32,22 +32,22 @@ const TodoTask: React.FC<ITodoTaskProps> = (props): JSX.Element => {
         <input
           type="checkbox"
           defaultChecked={completed}
-          // onChange={() => setComplete((prev) => !prev)}
+          onChange={() => dispatch(completedTodo({id}))}
         />
         {isEdit ? (
           <form onSubmit={handleBtnClick}>
             <input
               type="text"
-              size={todoText.length}
-              defaultValue={todoText}
+              size={todoEditText.length}
+              defaultValue={todoEditText}
               onChange={(e: React.ChangeEvent) => {
                 const target = e.target as HTMLInputElement;
-                setTodoText(target.value);
+                setTodoEditText(target.value);
               }}
             />
           </form>
         ) : (
-          <span>{todoText}</span>
+          <span>{todoEditText}</span>
         )}
       </div>
 
@@ -58,7 +58,10 @@ const TodoTask: React.FC<ITodoTaskProps> = (props): JSX.Element => {
           <Button onClick={editToggle}>Edit</Button>
         )}
 
-        <button className={classes.deleteBtn} onClick={() => deleteTodo(id)}>
+        <button
+          className={classes.deleteBtn}
+          onClick={() => dispatch(removeTodo({ id }))}
+        >
           x
         </button>
       </div>
