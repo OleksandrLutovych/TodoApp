@@ -7,6 +7,11 @@
 .input:focus-visible {
   outline: none;
 }
+
+input:checked + span {
+  text-decoration: line-through;
+}
+
 .inputSearch {
   border: 1px solid rgb(173, 173, 173);
   padding: 5px 10px;

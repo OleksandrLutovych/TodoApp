@@ -6,13 +6,20 @@ export const initialState: ITodoState = {
   todo: [],
 };
 
-export const fetchTodos = createAsyncThunk("todo/fetchTodos", async () => {
-  const response = await fetch(
-    "https://jsonplaceholder.typicode.com/todos?_limit=10"
-  );
-  const data = await response.json();
-  return data;
-});
+export const fetchTodos = createAsyncThunk(
+  "todo/fetchTodos",
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await fetch(
+        "https://jsonplaceholder.typicode.com/todos?_limit=10"
+      );
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
 
 export const todoSlice = createSlice({
   name: "todo",
@@ -33,7 +40,14 @@ export const todoSlice = createSlice({
       state.todo = newTodoArr;
     },
     editTodoState: (state, action) => {
+      const [newText, todoItem] = action.payload;
+      const [newTodoArr] = state.todo.filter((item) => item.id == todoItem.id);
+
+      newTodoArr.title = newText;
     },
+    completedTodo: (state, action) => {
+      
+    }
   },
   extraReducers(builder) {
     builder.addCase(fetchTodos.fulfilled, (state, action) => {

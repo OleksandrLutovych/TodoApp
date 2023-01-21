@@ -3,7 +3,7 @@ import TodoTask from "../components/TodoTask";
 import Button from "../components/UI/Button";
 import classes from "../components/Todo.module.scss";
 import { useAppSelector, useAppDispatch } from "../reducers/hook";
-import { addTodo, fetchTodos, removeTodo } from "../reducers/TodoReducer";
+import { addTodo, editTodoState, fetchTodos, removeTodo } from "../reducers/TodoReducer";
 import { ITodoApi } from "../types/redux.types";
 
 const Todo: React.FC = () => {
@@ -20,6 +20,12 @@ const Todo: React.FC = () => {
     const [todoTarget] = todo.filter((item) => item.id === id);
     dispatch(removeTodo(todoTarget));
   };
+  const setEditState = (id: string, text: string): void => {
+    const [todoTarget] = todo.filter((item) => item.id === id);
+    const editTodo = [text, todoTarget]
+    dispatch(editTodoState(editTodo))
+  }
+
 
   return (
     <div className="container">
@@ -56,7 +62,7 @@ const Todo: React.FC = () => {
             title={item.title}
             deleteTodo={deleteTodo}
             id={item.id}
-            inputValue={item.title}
+            setEditState={setEditState}
           />
         ))}
       </div>
