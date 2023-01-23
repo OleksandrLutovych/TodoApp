@@ -9,6 +9,8 @@ export type ITodoApi = {
 };
 export interface ITodoState {
   todo: Array<ITodoApi>;
+  isLoading: boolean;
+  error: string | null
 }
 
 export interface IPostsState {

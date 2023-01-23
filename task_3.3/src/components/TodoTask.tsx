@@ -3,7 +3,7 @@ import classes from "./Todo.module.scss";
 import { ITodoApi } from "../types/redux.types";
 import React, { useState } from "react";
 import { useAppDispatch } from "../reducers/hook";
-import { removeTodo, completedTodo } from "../reducers/TodoReducer";
+import { deleteTodo, completedTodo } from "../reducers/TodoReducer";
 
 export interface ITodoTaskProps extends ITodoApi {
   setEditState: (id: string, todoText: string) => void;
@@ -32,7 +32,7 @@ const TodoTask: React.FC<ITodoTaskProps> = (props): JSX.Element => {
         <input
           type="checkbox"
           defaultChecked={completed}
-          onChange={() => dispatch(completedTodo({id}))}
+          onChange={() => dispatch(completedTodo({ id }))}
         />
         {isEdit ? (
           <form onSubmit={handleBtnClick}>
@@ -60,7 +60,7 @@ const TodoTask: React.FC<ITodoTaskProps> = (props): JSX.Element => {
 
         <button
           className={classes.deleteBtn}
-          onClick={() => dispatch(removeTodo({ id }))}
+          onClick={() => dispatch(deleteTodo(id))}
         >
           x
         </button>

@@ -8,6 +8,7 @@ import { ITodoApi } from "../types/redux.types";
 
 const Todo: React.FC = () => {
   const todo = useAppSelector((state) => state.todo.todo);
+  const { error, isLoading } = useAppSelector((state) => state.todo);
   const dispatch = useAppDispatch();
 
   const [todoText, setTodoText] = useState("");
@@ -48,6 +49,8 @@ const Todo: React.FC = () => {
       </form>
       <div className="todo-container">
         <h3>Tasks</h3>
+        {isLoading && <h2>Loading...</h2>}
+        {error && <h2>Error : {error}</h2> }
         {todo.map((item: ITodoApi) => (
           <TodoTask
             key={item.id}
