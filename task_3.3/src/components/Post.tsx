@@ -1,5 +1,5 @@
 import { IPost } from "../types/postsType";
-import "./styles.scss";
+import classes from "./Posts.module.scss";
 
 interface PostsProps {
   posts: IPost;
@@ -7,8 +7,8 @@ interface PostsProps {
 
 const Post = ({ posts }: PostsProps) => {
   return (
-    <div className="post-item">
-      <div className="post-item_content">
+    <div className={classes.post_item}>
+      <div className={classes.post_item_content}>
         <p className="">
           <b>Title: </b>
           {posts.title}

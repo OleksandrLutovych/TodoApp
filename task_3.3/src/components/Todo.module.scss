@@ -7,6 +7,11 @@
 .input:focus-visible {
   outline: none;
 }
+
+input:checked + span {
+  text-decoration: line-through;
+}
+
 .inputSearch {
   border: 1px solid rgb(173, 173, 173);
   padding: 5px 10px;
@@ -37,7 +42,31 @@ form {
   border: none;
   cursor: pointer;
   padding: 5px 10px;
+  &:hover {
+    background-color: rgba(173, 173, 173, 0.204);
+  }
 }
-.btn:hover {
-  background-color: rgba(173, 173, 173, 0.204);
+
+.todoItem__elements {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.deleteBtn {
+  background-color: transparent;
+  border-radius: 5px;
+  border: none;
+  font-size: 25px;
+  cursor: pointer;
+  color: red;
+  &:hover {
+    background-color: rgba(173, 173, 173, 0.204);
+  }
+}
+
+.todoFooter {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid rgb(173, 173, 173);
+  align-items: center;
 }

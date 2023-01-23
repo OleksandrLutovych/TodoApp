@@ -1,5 +1,5 @@
 import { IUser } from "../types/usersTypes";
-import classes from "./user.module.css";
+import classes from "./User.module.scss";
 
 interface IUserProps {
   user: IUser;

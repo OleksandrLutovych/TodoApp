@@ -14,7 +14,7 @@ export const fetchUsers = createAsyncThunk<IUser[], undefined, {rejectValue: str
   async (_, { rejectWithValue }) => {
     try {
       const response = await fetch(
-        "https://jsonplaceh1older.typicode.com/users"
+        "https://jsonplaceholder.typicode.com/users"
       );
       const data = await response.json();
       return data;
