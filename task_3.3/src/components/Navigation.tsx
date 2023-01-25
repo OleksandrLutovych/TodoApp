@@ -1,42 +1,42 @@
 import { Link } from "react-router-dom";
-import { IconHome } from "./UI/IconHome";
-import classes from "../components/Todo.module.scss";
+import IconLogoReact from "./UI/IconLogoReact";
+import classes from "../components/Navigation.module.scss";
+import NavigationMeniIcon from "./UI/NavigationMenuIcon";
 
 const Navigation = () => {
   return (
-    <>
-      <header>
-        <nav className="header">
-          <div className="container menu1">
-            <ul className="menu">
-              <li>
-                <Link to="/" className="btn">
-                  <IconHome />
-                </Link>
-              </li>
-              <li>
-                <Link to="/posts">PostsList</Link>
-              </li>
-              <li>
-                <Link to="/userslist">UsersList</Link>
-              </li>
-              <li>
-                <Link to="/todo">TodoList</Link>
-              </li>
-            </ul>
-            <div className="menu1">
-              <input
-                type="search"
-                placeholder="Search..."
-                className={classes.inputSearch}
-                onChange={(e)=> { console.log(e.target.value)}}
-              />
-              <button className="btn">☾</button>
-            </div>
+    <aside>
+      <nav className={classes.navigation}>
+        <div>
+          <div className={classes.mainLogo}>
+            <IconLogoReact />
+            <span className={classes.navItemText}>TodoApp</span>
           </div>
-        </nav>
-      </header>
-    </>
+          <span className={classes.border}></span>
+          <ul className="menu">
+            <li className={classes.navBox}>
+              <Link to="/posts">
+                <NavigationMeniIcon />
+                <span className={classes.navItemText}>PostsList</span>
+              </Link>
+            </li>
+            <li className={classes.navBox}>
+              <Link to="/userslist">
+                <NavigationMeniIcon />
+                <span className={classes.navItemText}>User List</span>
+              </Link>
+            </li>
+            <li className={classes.navBox}>
+              <Link to="/todo">
+                <NavigationMeniIcon />
+                <span className={classes.navItemText}>Todo List</span>
+              </Link>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <div className="">Night mode</div>
+    </aside>
   );
 };
 

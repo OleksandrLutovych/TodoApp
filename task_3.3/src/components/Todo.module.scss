@@ -28,9 +28,12 @@ input:checked + span {
 form {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 20px;
+  padding: 20px;
 }
 .task {
+  background-color: rgb(44,44,56);
+  border-radius: 5px;
+  padding: 5px 10px;
   margin: 10px 0;
   display: flex;
   justify-content: space-between;
@@ -65,8 +68,14 @@ form {
 }
 
 .todoFooter {
+  padding: 0 20px;
+  color: #fff;
   display: flex;
   justify-content: space-between;
   border-top: 1px solid rgb(173, 173, 173);
   align-items: center;
+}
+.todoContainer {
+  color: #fff;
+  padding: 0 20px;
 }
