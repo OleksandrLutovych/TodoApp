@@ -17,7 +17,7 @@ const PostsList = () => {
   return (
     <div className="main">
       <div className="subNav">
-        <h2>Posts List</h2>
+        <h2>Posts Listt</h2>
         <Button>+ Add New Post</Button>
       </div>
       <div className={classes.postsContainer}>
