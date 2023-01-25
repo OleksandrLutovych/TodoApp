@@ -30,8 +30,11 @@ const Todo: React.FC = () => {
   };
 
   return (
-    <div className="container">
-      <h2>Todo List</h2>
+    <div className="main">
+      <div className="subNav">
+        <h2 >Todo List</h2>
+        <Button>+ Add New Todo</Button>
+      </div>
       <form className={classes.form}>
         <input
           type="text"
@@ -46,7 +49,7 @@ const Todo: React.FC = () => {
           <Button onClick={createTodo}>Create task</Button>
         </div>
       </form>
-      <div className="todo-container">
+      <div className={classes.todoContainer}>
         <h3>Tasks</h3>
         {todo.map((item: ITodoApi) => (
           <TodoTask

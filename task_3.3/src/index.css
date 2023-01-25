@@ -1,7 +1,8 @@
 * {
   box-sizing: border-box;
 }
-body, form {
+body {
+  background-color: rgb(33, 33, 45);
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
@@ -15,35 +16,44 @@ code {
     monospace;
 }
 h2 {
-  font-size: 2rem;
-  text-align: center;
-  border-bottom: 1px solid rgb(173, 173, 173);
-  margin: 10px 0;
+  color: white;
+  font-size: 1.6rem;
+  font-weight: 500;
+  margin: 0;
 }
 h3 {
   border-bottom: 1px solid rgb(173, 173, 173);
   padding-bottom: 5px;
 }
-.container {
+/* .container {
   max-width: 1000px;
   margin: 0 auto;
   padding: 0 10px;
-}
+} */
 
-.header {
-  background-color: rgb(59, 53, 105);
-}
-
-.menu {
+.main-logo {
   display: flex;
   align-items: center;
-  padding: 20px 0;
+  border-radius: 5px;
+  border: none;
+  font-size: 25px;
+  color: white;
+}
+.main-logo + svg {
+  margin-right: 10px;
+}
+.menu {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   list-style: none;
+  padding: 0;
 }
 
-
 a {
-  color: #fff;
+  display: flex;
+  align-items: center;
+  color: rgb(109, 112, 126);
   text-decoration: none;
   margin-right: 20px;
 }
@@ -52,6 +62,8 @@ a:hover {
 }
 
 .btn {
+  display: flex;
+  align-items: center;
   background-color: transparent;
   border-radius: 5px;
   border: none;
@@ -62,4 +74,33 @@ a:hover {
 }
 .btn:hover {
   background-color: rgba(173, 173, 173, 0.204);
+}
+.subNav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 74px;
+  background-color: rgb(44, 44, 56);
+  padding: 0 20px;
+  border-bottom: 1px solid rgba(173, 173, 173, 0.204);
+}
+
+aside {
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(44, 44, 56);
+  overflow-x: hidden;
+  border-right: 1px solid rgba(173, 173, 173, 0.204);
+}
+
+.main {
+  padding-left: 250px;
+}
+.button {
+  color: #fff;
 }

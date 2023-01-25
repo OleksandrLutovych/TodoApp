@@ -8,11 +8,11 @@ interface IUserProps {
 const User = ({ user }: IUserProps) => {
   return (
     <div className={classes.userBox}>
-      <div style={{ marginLeft: "10px" }}>
-        <p className="">
+      <div>
+        <p>
           <b>Name:</b> {user.name}
         </p>
-        <p className="">
+        <p>
           <b>Username:</b> {user.username}
         </p>
       </div>
