@@ -18,8 +18,9 @@ const Todo: React.FC = () => {
 
   const createTodo = (e: React.FormEvent) => {
     e.preventDefault();
-
-    dispatch(addTodo(todoText));
+    if (todoText.trim()) {
+      dispatch(addTodo(todoText));
+    }
     setTodoText("");
   };
 
@@ -32,7 +33,7 @@ const Todo: React.FC = () => {
   return (
     <div className="main">
       <div className="subNav">
-        <h2 >Todo List</h2>
+        <h2>Todo List</h2>
         <Button>+ Add New Todo</Button>
       </div>
       <form className={classes.form}>
@@ -42,7 +43,9 @@ const Todo: React.FC = () => {
           className={classes.input}
           value={todoText}
           onChange={(e) => {
-            setTodoText(e.target.value);
+            if (e.target.value.trim()) {
+              setTodoText(e.target.value);
+            }
           }}
         />
         <div>
