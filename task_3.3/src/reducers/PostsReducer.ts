@@ -19,7 +19,14 @@ export const postsSlice = createSlice({
   name: "posts",
   initialState,
   reducers: {
-    addPosts: () => {},
+    addPosts: (state, action) => {
+      state.posts.push({
+        userId: 1,
+        id: 1,
+        title: action.payload.title,
+        body: action.payload.body
+      })
+    },
     editPosts: () => {},
     deletePosts: () => {},
   },
@@ -30,5 +37,6 @@ extraReducers(builder) {
 },
   
 });
+export const {addPosts} = postsSlice.actions
 export const postsState = (state: RootState) => state.posts;
 export default postsSlice.reducer;

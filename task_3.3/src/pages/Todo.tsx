@@ -66,12 +66,6 @@ const Todo: React.FC = () => {
       </div>
       <div className={classes.todoFooter}>
         <p>{todo.length} items</p>
-        <div>
-          <button className={classes.btn}>All</button>
-          <button className={classes.btn}>Completed</button>
-          <button className={classes.btn}>Active</button>
-        </div>
-
         <Button>Clear Items</Button>
       </div>
     </div>
