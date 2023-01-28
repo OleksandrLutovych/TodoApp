@@ -3,8 +3,7 @@ import { styled } from "@mui/material/styles";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch, { SwitchProps } from "@mui/material/Switch";
-import Stack from "@mui/material/Stack";
-import Typography from "@mui/material/Typography";
+import { useState } from "react";
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   width: 62,
@@ -54,6 +53,10 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 }));
 
 export default function NightmodeToogle() {
+  const [themeMode, setThemeMode] = useState(true);
+
+  const toggleThemeMode = () => themeMode ? console.log('light mode') : console.log('dark mode')
+  
   return (
     <FormGroup>
       <FormControlLabel
@@ -62,12 +65,17 @@ export default function NightmodeToogle() {
             sx={{ m: 1 }}
             defaultChecked
             onChange={() => {
-              console.log("test");
+              toggleThemeMode()
+              setThemeMode(prev => !prev)
             }}
           />
         }
         label="Night Mode"
-        style={{ color: "#fff", display: "flex", justifyContent: 'space-around' }}
+        style={{
+          color: "#fff",
+          display: "flex",
+          justifyContent: "space-around",
+        }}
       />
     </FormGroup>
   );

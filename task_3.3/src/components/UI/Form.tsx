@@ -1,6 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import classes from "./Form.module.scss";
+import classes from "./styles/Form.module.scss";
 
 interface IFormProps {
   handleClose: () => void

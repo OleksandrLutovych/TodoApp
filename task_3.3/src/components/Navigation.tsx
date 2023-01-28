@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import IconLogoReact from "./UI/IconLogoReact";
-import classes from "../components/Navigation.module.scss";
+import classes from "../styles/Navigation.module.scss";
 import NavigationMeniIcon from "./UI/NavigationMenuIcon";
 import NightmodeToogle from "./UI/NightmodeToggle";
 

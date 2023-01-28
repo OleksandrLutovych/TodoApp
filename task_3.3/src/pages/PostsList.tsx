@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { IPost } from "../types/postsType";
 import { addPosts, fetchPosts } from "../reducers/PostsReducer";
 import { useAppDispatch, useAppSelector } from "../reducers/hook";
-import classes from "../components/Posts.module.scss";
+import classes from "../styles//Posts.module.scss";
 import ModalForm from "../components/UI/ModalForm";
 
 const PostsList = () => {

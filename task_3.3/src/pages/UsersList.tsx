@@ -4,7 +4,7 @@ import { IUser } from "../types/usersTypes";
 import { useAppDispatch, useAppSelector } from "../reducers/hook";
 import { fetchUsers } from "../reducers/UsersReducer";
 import Button from "../components/UI/Button";
-import classes from "../components/User.module.scss";
+import classes from "../styles/User.module.scss";
 
 const UsersList = () => {
   const dispatch = useAppDispatch();

@@ -1,0 +1,13 @@
+@import "./colors";
+
+.post_item {
+  border-bottom: 1px solid $border-color;
+  &_content {
+    margin-left: 10px;
+  }
+}
+
+.postsContainer {
+  color: $white;
+  padding: 0 20px;
+}

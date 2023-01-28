@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import TodoTask from "../components/TodoTask";
 import Button from "../components/UI/Button";
-import classes from "../components/Todo.module.scss";
+import classes from "../styles/Todo.module.scss";
 import { useAppSelector, useAppDispatch } from "../reducers/hook";
 import { addTodo, editTodoState, fetchTodos } from "../reducers/TodoReducer";
 import { ITodoApi } from "../types/redux.types";

@@ -1,10 +1,12 @@
+@import "./src/styles/_colors";
+
 .formBox {
-  background-color: rgb(44, 44, 56);
+  background-color: $dark;
   border: none;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  color: #fff;
+  color: $white;
 }
 .formTitle {
   font-size: 20px;
@@ -15,9 +17,9 @@ input {
   border-radius: 7px;
   padding: 10px 20px;
   background-color: transparent;
-  border: 1px solid rgba(173, 173, 173, 0.204);
-  caret-color: #fff;
-  color: #fff;
+  @include border;
+  caret-color: $white;
+  color: $white;
   &:focus-visible {
     outline: none;
   }
@@ -29,19 +31,19 @@ label {
   font-size: 15px;
   padding: 5px 15px;
   height: 30px;
-  background-color: rgb(100, 95, 198);
+  background-color: $button;
   border-radius: 5px;
   border: none;
   margin-top: 20px;
   cursor: pointer;
-  color: #fff;
+  color: $white;
   &:hover {
-    background-color: rgb(130, 130, 234);
+    background-color: $button-hover;
   }
 }
 
-.validateMsg{
-  color: red;
+.validateMsg {
+  color: $red;
   font-size: 12px;
   margin-top: 5px;
 }

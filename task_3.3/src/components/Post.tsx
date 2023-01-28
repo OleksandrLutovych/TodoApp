@@ -1,5 +1,5 @@
 import { IPost } from "../types/postsType";
-import classes from "./Posts.module.scss";
+import classes from "../styles/Posts.module.scss";
 
 interface PostsProps {
   posts: IPost;
@@ -13,7 +13,11 @@ const Post = ({ posts }: PostsProps) => {
           <b>Title: </b>
           {posts.title}
         </p>
-        <p className="">{posts.body}</p>
+
+        <p className="">
+          <b>Body: </b>
+          {posts.body}
+        </p>
       </div>
     </div>
   );

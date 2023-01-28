@@ -1,5 +1,7 @@
+@import "./colors";
+
 .input {
-  border: 1px solid rgb(173, 173, 173);
+  @include border;
   width: 70%;
   padding: 5px 10px;
   border-radius: 5px;
@@ -13,7 +15,7 @@ input:checked + span {
 }
 
 .inputSearch {
-  border: 1px solid rgb(173, 173, 173);
+  @include border;
   padding: 5px 10px;
   border-radius: 5px;
   opacity: 0.8;
@@ -31,7 +33,7 @@ form {
   padding: 20px;
 }
 .task {
-  background-color: rgb(44,44,56);
+  background-color: $lighter-dark;
   border-radius: 5px;
   padding: 5px 10px;
   margin: 10px 0;
@@ -46,7 +48,7 @@ form {
   cursor: pointer;
   padding: 5px 10px;
   &:hover {
-    background-color: rgba(173, 173, 173, 0.204);
+    background-color: $lighter-dark;
   }
 }
 
@@ -63,19 +65,19 @@ form {
   cursor: pointer;
   color: red;
   &:hover {
-    background-color: rgba(173, 173, 173, 0.204);
+    background-color: $lighter-dark;
   }
 }
 
 .todoFooter {
   padding: 0 20px;
-  color: #fff;
+  color: $white;
   display: flex;
   justify-content: space-between;
-  border-top: 1px solid rgb(173, 173, 173);
+  border-top: 1px solid $border-color;
   align-items: center;
 }
 .todoContainer {
-  color: #fff;
+  color: $white;
   padding: 0 20px;
 }

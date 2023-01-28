@@ -1,0 +1,15 @@
+$white: #fff;
+$lighter-dark: rgb(44, 44, 56);
+$dark: rgb(33, 33, 45);
+$border-color: rgba(173, 173, 173, 0.204);
+$red: red;
+
+$nav-button-hover: rgb(100, 95, 198);
+$nav-button: rgb(147, 148, 154);
+
+$button: rgb(100, 95, 198);
+$button-hover: rgb(130, 130, 234);
+
+@mixin border {
+    border: 1px solid $border-color;
+}

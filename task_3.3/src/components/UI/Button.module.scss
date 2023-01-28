@@ -1,13 +1,15 @@
+@import "./src/styles/_colors";
+
 .btn {
   font-size: 15px;
   padding: 5px 15px;
   height: 30px;
-  background-color: rgb(100,95,198);
+  background-color: $button;
   border-radius: 5px;
   border: none;
   cursor: pointer;
-  color: #fff;
+  color: $white;
 }
 .btn:hover {
-  background-color: rgb(130, 130, 234);
+  background-color: $button-hover;
 }
