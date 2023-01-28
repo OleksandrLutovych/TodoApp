@@ -3,7 +3,7 @@ import * as React from "react";
 
 function NavigationMeniIcon() {
   return (
-    <svg fill="none" viewBox="0 0 24 24" height="1em" width="1em" color="white">
+    <svg fill="none" viewBox="0 0 24 24" height="1em" width="1em">
       <path
         fill="currentColor"
         fillRule="evenodd"

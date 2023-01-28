@@ -1,0 +1,47 @@
+.formBox {
+  background-color: rgb(44, 44, 56);
+  border: none;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+}
+.formTitle {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+input {
+  border-radius: 7px;
+  padding: 10px 20px;
+  background-color: transparent;
+  border: 1px solid rgba(173, 173, 173, 0.204);
+  caret-color: #fff;
+  color: #fff;
+  &:focus-visible {
+    outline: none;
+  }
+}
+label {
+  margin: 25px 0 8px;
+}
+.submitBtn {
+  font-size: 15px;
+  padding: 5px 15px;
+  height: 30px;
+  background-color: rgb(100, 95, 198);
+  border-radius: 5px;
+  border: none;
+  margin-top: 20px;
+  cursor: pointer;
+  color: #fff;
+  &:hover {
+    background-color: rgb(130, 130, 234);
+  }
+}
+
+.validateMsg{
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
