@@ -53,10 +53,11 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 }));
 
 export default function NightmodeToogle() {
-  const [themeMode, setThemeMode] = useState(true);
+  const [themeMode, setThemeMode] = useState("dark");
 
-  const toggleThemeMode = () => themeMode ? console.log('light mode') : console.log('dark mode')
-  
+  const toggleThemeMode = () =>
+    themeMode === "dark" ? console.log(themeMode) : console.log(themeMode);
+
   return (
     <FormGroup>
       <FormControlLabel
@@ -65,8 +66,10 @@ export default function NightmodeToogle() {
             sx={{ m: 1 }}
             defaultChecked
             onChange={() => {
-              toggleThemeMode()
-              setThemeMode(prev => !prev)
+              toggleThemeMode();
+              setThemeMode((prev) =>
+                prev === "dark" ? (prev = "light") : (prev = "dark")
+              );
             }}
           />
         }

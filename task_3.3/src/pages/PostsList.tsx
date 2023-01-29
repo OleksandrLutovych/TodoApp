@@ -1,14 +1,15 @@
 import Post from "../components/Post";
 import { useEffect, useState } from "react";
 import { IPost } from "../types/postsType";
-import { addPosts, fetchPosts } from "../reducers/PostsReducer";
+import { fetchPosts } from "../reducers/PostsReducer";
 import { useAppDispatch, useAppSelector } from "../reducers/hook";
 import classes from "../styles//Posts.module.scss";
 import ModalForm from "../components/UI/ModalForm";
+import Loader from "../components/UI/Loader";
 
 const PostsList = () => {
   const dispatch = useAppDispatch();
-  const posts = useAppSelector((state) => state.posts.posts);
+  const postsState = useAppSelector((state) => state.posts);
 
   useEffect(() => {
     dispatch(fetchPosts());
@@ -20,11 +21,16 @@ const PostsList = () => {
         <h2>Posts List</h2>
         <ModalForm btnText="+ Add Post List" formTitle="Add New Post" />
       </div>
-      <div className={classes.postsContainer}>
-        {posts.map((post: IPost) => (
-          <Post posts={post} key={post.id} />
-        ))}
-      </div>
+      {postsState && <h2>{postsState.error}</h2> }
+      {postsState.loading ? (
+        <Loader/>
+      ) : (
+        <div className={classes.postsContainer}>
+          {postsState.posts.map((post: IPost) => (
+            <Post posts={post} key={post.id} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };

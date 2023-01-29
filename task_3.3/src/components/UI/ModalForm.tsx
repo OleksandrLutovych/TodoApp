@@ -6,13 +6,13 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import classes from "./Form.module.scss";
 import { useAppDispatch } from "../../reducers/hook";
-import { addPosts } from "../../reducers/PostsReducer";
+import { addfetchPosts } from "../../reducers/PostsReducer";
 
 interface IModalProps {
   btnText: string;
   formTitle: string;
 }
-interface IForm {
+export interface IForm {
   title: string;
   body: string;
 }
@@ -40,7 +40,7 @@ const ModalForm = (props: IModalProps) => {
   } = useForm<IForm>();
 
   const formOnSubmit = (data: IForm) => {
-    dispatch(addPosts(data));
+    dispatch(addfetchPosts(data));
     reset();
     handleClose();
   };

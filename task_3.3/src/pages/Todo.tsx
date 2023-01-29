@@ -11,6 +11,7 @@ const Todo: React.FC = () => {
   const dispatch = useAppDispatch();
 
   const [todoText, setTodoText] = useState("");
+  console.log(todoText);
 
   useEffect(() => {
     dispatch(fetchTodos());
@@ -42,11 +43,7 @@ const Todo: React.FC = () => {
           placeholder="Create task"
           className={classes.input}
           value={todoText}
-          onChange={(e) => {
-            if (e.target.value.trim()) {
-              setTodoText(e.target.value);
-            }
-          }}
+          onChange={(e) => setTodoText(e.target.value)}
         />
         <div>
           <Button onClick={createTodo}>Create task</Button>

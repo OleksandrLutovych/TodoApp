@@ -3,10 +3,21 @@ import IconLogoReact from "./UI/IconLogoReact";
 import classes from "../styles/Navigation.module.scss";
 import NavigationMeniIcon from "./UI/NavigationMenuIcon";
 import NightmodeToogle from "./UI/NightmodeToggle";
+import ReactSwitch from "react-switch";
+import { useState, useEffect } from "react";
 
 const Navigation = () => {
+  const [themeMode, setThemeMode] = useState("dark");
+
+  const toggleThemeMode = () =>
+    setThemeMode(themeMode === "light" ? "dark" : "light");
+
+  useEffect(() => {
+    document.body.setAttribute("data-theme", themeMode);
+    document.querySelector(".subNav")?.setAttribute("data-theme", themeMode);
+  });
   return (
-    <aside>
+    <aside className={themeMode}>
       <nav>
         <div>
           <div className={classes.mainLogo}>
@@ -37,7 +48,13 @@ const Navigation = () => {
         </div>
       </nav>
       <div className={classes.nightMode}>
-        <NightmodeToogle />
+        <ReactSwitch
+          uncheckedIcon
+          checkedIcon
+          onChange={toggleThemeMode}
+          checked={themeMode === "dark"}
+        />
+        Night Mode
       </div>
     </aside>
   );

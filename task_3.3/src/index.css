@@ -2,7 +2,8 @@
   box-sizing: border-box;
 }
 body {
-  background-color: rgb(33, 33, 45);
+  background-color: var(--colors-bg);
+  color: var(--colors-text);
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
@@ -10,13 +11,22 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+body[data-theme="dark"] {
+  --colors-text: white;
+  --colors-bg: rgb(33, 33, 45);
+  caret-color: white;
+}
 
+body[data-theme="light"] {
+  --colors-text: black;
+  --colors-bg: #fff;
+  caret-color: black;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 h2 {
-  color: white;
   font-size: 1.6rem;
   font-weight: 500;
   margin: 0;
@@ -25,11 +35,6 @@ h3 {
   border-bottom: 1px solid rgb(173, 173, 173);
   padding-bottom: 5px;
 }
-/* .container {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 0 10px;
-} */
 
 .main-logo {
   display: flex;
@@ -80,7 +85,7 @@ a:hover {
   align-items: center;
   width: 100%;
   height: 74px;
-  background-color: rgb(44, 44, 56);
+  /* background-color: rgb(44, 44, 56); */
   padding: 0 20px;
   border-bottom: 1px solid rgba(173, 173, 173, 0.204);
 }
@@ -96,9 +101,18 @@ aside {
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: rgb(44, 44, 56);
   overflow-x: hidden;
   border-right: 1px solid rgba(173, 173, 173, 0.204);
+}
+
+.light {
+  background-color: rgb(216, 220, 248);
+  color: black;
+  border-right: 1px solid rgba(7, 7, 7, 0.204);
+}
+
+.dark {
+  background-color: rgb(44, 44, 56);
 }
 
 .main {
@@ -106,4 +120,12 @@ aside {
 }
 .button {
   color: #fff;
+}
+
+.modal {
+  position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translateX(10%);
+    width: 400px;
 }
