@@ -4,6 +4,7 @@
   background-color: $dark;
   border: none;
   border-radius: 10px;
+  // border: 1px solid red;
   display: flex;
   flex-direction: column;
   color: $white;
@@ -11,6 +12,11 @@
   input {
     color: white;
   }
+}
+
+label {
+  display: flex;
+  flex-direction: column;
 }
 .formTitle {
   font-size: 20px;

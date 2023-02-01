@@ -6,13 +6,23 @@ interface PostsProps {
 }
 
 const Post = ({ posts }: PostsProps) => {
+  console.log(typeof(posts.date))
   return (
     <div className={classes.post_item}>
       <div className={classes.post_item_content}>
-        <p className="">
-          <b>Title: </b>
-          {posts.title}
-        </p>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <p className="">
+            <b>Title: </b>
+            {posts.title}
+          </p>
+          {posts.date}
+        </div>
 
         <p className="">
           <b>Body: </b>

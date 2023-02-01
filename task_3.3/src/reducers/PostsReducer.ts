@@ -35,6 +35,7 @@ export const addfetchPosts = createAsyncThunk<
       id: 1,
       title: postData.title,
       body: postData.body,
+      date: postData.date,
     };
     const response = await fetch(
       "https://jsonplaceholder.typicode.com/posts?_limit=5",
@@ -81,6 +82,7 @@ export const postsSlice = createSlice({
       })
       .addMatcher(isError, (state, action: PayloadAction<string>) => {
         state.error = action.payload;
+        state.loading = false;
       });
   },
 });

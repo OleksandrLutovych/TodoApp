@@ -11,7 +11,6 @@ const Todo: React.FC = () => {
   const dispatch = useAppDispatch();
 
   const [todoText, setTodoText] = useState("");
-  console.log(todoText);
 
   useEffect(() => {
     dispatch(fetchTodos());

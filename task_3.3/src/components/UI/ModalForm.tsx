@@ -2,20 +2,10 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Button from "./Button";
-import { useState } from "react";
-import { useForm } from "react-hook-form";
 import classes from "./Form.module.scss";
-import { useAppDispatch } from "../../reducers/hook";
-import { addfetchPosts } from "../../reducers/PostsReducer";
+import { IModalFormProps } from "../../types/UITypes";
+import { useState } from "react";
 
-interface IModalProps {
-  btnText: string;
-  formTitle: string;
-}
-export interface IForm {
-  title: string;
-  body: string;
-}
 const style = {
   position: "absolute" as "absolute",
   top: "50%",
@@ -24,57 +14,68 @@ const style = {
   width: 400,
   boxShadow: 24,
 };
-const ModalForm = (props: IModalProps) => {
-  const dispatch = useAppDispatch();
-  const { formTitle } = props;
 
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
+const ModalForm = (props: IModalFormProps) => {
   const {
-    register,
+    formTitle,
     handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm<IForm>();
+    register,
+    errors,
+    submitForm,
+    modalState,
+    modalOpen,
+    modalClose,
+  } = props;
 
-  const formOnSubmit = (data: IForm) => {
-    dispatch(addfetchPosts(data));
-    reset();
-    handleClose();
-  };
+  const [checkboxState, setCheckboxState] = useState(false);
 
   return (
     <div>
-      <Button onClick={handleOpen}>{props.btnText}</Button>
+      <Button onClick={modalOpen}>{props.btnText}</Button>
       <Modal
-        open={open}
-        onClose={handleClose}
+        open={modalState}
+        onClose={modalClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <form
-            onSubmit={handleSubmit(formOnSubmit)}
-            className={classes.formBox}
-          >
+          <form onSubmit={handleSubmit(submitForm)} className={classes.formBox}>
             <span className={classes.formTitle}>{formTitle}</span>
-            <label htmlFor="">Title</label>
-            <input
-              placeholder="e.g. Sunt aut facere repellat"
-              {...register("title", {
-                required: true,
-                validate: (value) => value.trim().length > 0,
-                setValueAs: (v) => v.trim(),
-              })}
-            />
-
-            {errors.title && (
-              <span className={classes.validateMsg}>
-                This field is required
-              </span>
-            )}
+            <label
+              style={{
+                display: "flex",
+                alignItems: "center",
+                flexDirection: "row",
+              }}
+            >
+              <input
+                type="checkbox"
+                style={{ marginRight: "10px" }}
+                defaultChecked={false}
+                checked={checkboxState}
+                onClick={() => setCheckboxState((prev) => !prev)}
+              />
+              Add date
+            </label>
+            <label htmlFor="">
+              Title
+              <input
+                placeholder="e.g. Sunt aut facere repellat"
+                {...register("title", {
+                  required: true,
+                  minLength: {
+                    value: 5,
+                    message: "Min",
+                  },
+                  validate: (value) => value.trim().length > 0,
+                  setValueAs: (v) => v.trim(),
+                })}
+                style={errors.title && { border: "1px solid red" }}
+              />
+              {errors.title && (
+                <p className={classes.validateMsg}>{errors.title.message}</p>
+              )}
+            </label>
             <label htmlFor="">Body</label>
             <input
               placeholder="e.g. Recusandae consequuntur expedita"
@@ -83,11 +84,16 @@ const ModalForm = (props: IModalProps) => {
                 validate: (value) => value.trim().length > 0,
                 setValueAs: (v) => v.trim(),
               })}
+              style={errors.body && { border: "1px solid red" }}
             />
             {errors.body && (
-              <span className={classes.validateMsg}>
-                This field is required
-              </span>
+              <p className={classes.validateMsg}>{errors.body.message}</p>
+            )}
+            {checkboxState && (
+              <label htmlFor="">
+                Add post date
+                <input type="date" {...register("date", )} />
+              </label>
             )}
             <input
               type="submit"
