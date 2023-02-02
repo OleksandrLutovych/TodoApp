@@ -6,7 +6,6 @@ interface PostsProps {
 }
 
 const Post = ({ posts }: PostsProps) => {
-  console.log(typeof(posts.date))
   return (
     <div className={classes.post_item}>
       <div className={classes.post_item_content}>

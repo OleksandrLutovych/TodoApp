@@ -15,7 +15,7 @@ const UsersList: React.FC = () => {
   }, [dispatch]);
 
   return (
-    <div className="main">
+    <>
       <div className="subNav">
         <h2>Users List</h2>
         {/* <ModalForm
@@ -28,7 +28,7 @@ const UsersList: React.FC = () => {
           <User user={user} key={user.id} />
         ))}
       </div>
-    </div>
+    </>
   );
 };
 

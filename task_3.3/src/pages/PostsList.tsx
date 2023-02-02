@@ -52,7 +52,7 @@ const PostsList: React.FC = () => {
   };
 
   return (
-    <div className="main">
+    <>
       <div className="subNav">
         <h2>Posts List</h2>
         <ModalForm
@@ -77,7 +77,7 @@ const PostsList: React.FC = () => {
           ))}
         </div>
       )}
-    </div>
+    </>
   );
 };
 

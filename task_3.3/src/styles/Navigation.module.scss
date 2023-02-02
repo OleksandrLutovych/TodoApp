@@ -39,9 +39,35 @@
   margin-left: 10px;
 }
 .nightMode {
-  margin: 10px 55px 10px 25px;
+  font-size: 10px;
+  background-color: rgba(62, 62, 62, 0.393);
+  margin: 10px 25px;
+  padding: 5px 45px;
   border-radius: 10px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
 }
+
+.toggleMenu{
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  color: $nav-button;
+  font-weight: 300;
+  background-color: transparent;
+  margin-top: 20px;
+  cursor: pointer;
+  border: none;
+  padding: 10px 15px 10px 25px;
+  border-radius: 5px;
+  &:hover {
+    background-color: $border-color;
+    border-top-left-radius:0%;
+    border-bottom-left-radius:0%;
+  }
+  svg{
+    margin-right: 10px;
+  }
+}
+

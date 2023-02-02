@@ -5,8 +5,12 @@ import NavigationMeniIcon from "./UI/NavigationMenuIcon";
 import NightmodeToogle from "./UI/NightmodeToggle";
 import ReactSwitch from "react-switch";
 import { useState, useEffect } from "react";
+import NightlightIcon from "@mui/icons-material/Nightlight";
+import LightModeIcon from "@mui/icons-material/LightMode";
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
-const Navigation = () => {
+const Navigation = (props: any) => {
+  const { isMenuHidden, setMenuState } = props;
   const [themeMode, setThemeMode] = useState("dark");
 
   const toggleThemeMode = () =>
@@ -16,8 +20,9 @@ const Navigation = () => {
     document.body.setAttribute("data-theme", themeMode);
     document.querySelector(".subNav")?.setAttribute("data-theme", themeMode);
   });
+
   return (
-    <aside className={themeMode}>
+    <aside className={isMenuHidden ? "hidden" : "visible"}>
       <nav>
         <div>
           <div className={classes.mainLogo}>
@@ -47,14 +52,26 @@ const Navigation = () => {
           </ul>
         </div>
       </nav>
-      <div className={classes.nightMode}>
-        <ReactSwitch
+      <div className="">
+        <div className={classes.nightMode}>
+          <LightModeIcon sx={{ fontSize: 15 }} />
+          <NightmodeToogle
+            onChange={toggleThemeMode}
+            checked={themeMode === "dark"}
+          />
+          {/* <ReactSwitch
           uncheckedIcon
-          checkedIcon
+          checkedIcon 
           onChange={toggleThemeMode}
           checked={themeMode === "dark"}
-        />
-        Night Mode
+          size={}
+        /> */}
+          <NightlightIcon sx={{ fontSize: 15 }} />
+        </div>
+        <button className={classes.toggleMenu} onClick={setMenuState}>
+          <VisibilityOffIcon sx={{fontSize: 15}}/>
+          Hide Sidebar
+        </button>
       </div>
     </aside>
   );

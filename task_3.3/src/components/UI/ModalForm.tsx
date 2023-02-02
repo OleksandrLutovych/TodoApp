@@ -51,9 +51,8 @@ const ModalForm = (props: IModalFormProps) => {
               <input
                 type="checkbox"
                 style={{ marginRight: "10px" }}
-                defaultChecked={false}
                 checked={checkboxState}
-                onClick={() => setCheckboxState((prev) => !prev)}
+                onChange={() => setCheckboxState((prev) => !prev)}
               />
               Add date
             </label>

@@ -31,7 +31,7 @@ const Todo: React.FC = () => {
   };
 
   return (
-    <div className="main">
+    <>
       <div className="subNav">
         <h2>Todo List</h2>
         <Button>+ Add New Todo</Button>
@@ -64,7 +64,7 @@ const Todo: React.FC = () => {
         <p>{todo.length} items</p>
         <Button>Clear Items</Button>
       </div>
-    </div>
+    </>
   );
 };
 
