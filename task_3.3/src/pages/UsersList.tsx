@@ -14,14 +14,22 @@ const UsersList: React.FC = () => {
     dispatch(fetchUsers());
   }, [dispatch]);
 
+
   return (
     <>
-      <div className="subNav">
+      <div className={classes.pageHeader}>
         <h2>Users List</h2>
         {/* <ModalForm
+          modalOpen={modalOpen}
+          modalClose={modalClose}
+          modalState={modalState}
           btnText="+ Add New User"
           formTitle="Add New User"
-        ></ModalForm> */}
+          handleSubmit={handleSubmit}
+          submitForm={submitForm}
+          register={register}
+          errors={errors}
+        /> */}
       </div>
       <div className={classes.usersContainer}>
         {users.map((user: IUser) => (

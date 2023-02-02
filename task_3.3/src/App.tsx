@@ -19,7 +19,7 @@ const App = () => {
         isMenuHidden={isMenuHidden}
         setMenuState={toggleMenu}
       ></Navigation>
-      <div className={isMenuHidden ? "full-width" : "less-width"}>
+      <div className="content-page">
         <Routes>
           <Route path="/" element={<PostsList />} />
           <Route path="/userslist" element={<UsersList />} />

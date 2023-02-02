@@ -28,6 +28,9 @@ const ModalForm = (props: IModalFormProps) => {
   } = props;
 
   const [checkboxState, setCheckboxState] = useState(false);
+  const invalidAreaBorderColor = {
+    border: "1px solid red",
+  };
 
   return (
     <div>
@@ -41,13 +44,7 @@ const ModalForm = (props: IModalFormProps) => {
         <Box sx={style}>
           <form onSubmit={handleSubmit(submitForm)} className={classes.formBox}>
             <span className={classes.formTitle}>{formTitle}</span>
-            <label
-              style={{
-                display: "flex",
-                alignItems: "center",
-                flexDirection: "row",
-              }}
-            >
+            <label className={classes.dateInput}>
               <input
                 type="checkbox"
                 style={{ marginRight: "10px" }}
@@ -62,14 +59,8 @@ const ModalForm = (props: IModalFormProps) => {
                 placeholder="e.g. Sunt aut facere repellat"
                 {...register("title", {
                   required: true,
-                  minLength: {
-                    value: 5,
-                    message: "Min",
-                  },
-                  validate: (value) => value.trim().length > 0,
-                  setValueAs: (v) => v.trim(),
                 })}
-                style={errors.title && { border: "1px solid red" }}
+                style={errors.title && invalidAreaBorderColor}
               />
               {errors.title && (
                 <p className={classes.validateMsg}>{errors.title.message}</p>
@@ -80,18 +71,16 @@ const ModalForm = (props: IModalFormProps) => {
               placeholder="e.g. Recusandae consequuntur expedita"
               {...register("body", {
                 required: true,
-                validate: (value) => value.trim().length > 0,
-                setValueAs: (v) => v.trim(),
               })}
-              style={errors.body && { border: "1px solid red" }}
+              style={errors.body && invalidAreaBorderColor}
             />
             {errors.body && (
               <p className={classes.validateMsg}>{errors.body.message}</p>
             )}
             {checkboxState && (
-              <label htmlFor="">
+              <label>
                 Add post date
-                <input type="date" {...register("date", )} />
+                <input type="date" {...register("date")} />
               </label>
             )}
             <input

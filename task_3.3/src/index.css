@@ -42,18 +42,11 @@ h3 {
   border-radius: 5px;
   border: none;
   font-size: 25px;
-  color: white;
 }
 .main-logo + svg {
   margin-right: 10px;
 }
-.menu {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  list-style: none;
-  padding: 0;
-}
+
 
 a {
   display: flex;
@@ -79,16 +72,7 @@ a:hover {
 .btn:hover {
   background-color: rgba(173, 173, 173, 0.204);
 }
-.subNav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: 74px;
-  /* background-color: rgb(44, 44, 56); */
-  padding: 0 20px;
-  border-bottom: 1px solid rgba(173, 173, 173, 0.204);
-}
+
 
 aside {
   padding: 20px 0 35px 0;
@@ -111,6 +95,7 @@ aside {
 
 .toggle-btn {
   display: flex;
+  position: absolute;
   justify-content: space-between;
   font-size: 16px;
   color: white;
@@ -124,7 +109,8 @@ aside {
   background-color: rgb(100, 95, 198);
   border-top-left-radius: 0%;
   border-bottom-left-radius: 0%;
-  margin-top: 170px;
+  left: 0;
+  bottom: 35px;
 }
 .toggle-btn:hover {
   background-color: rgb(130, 130, 234);
@@ -145,8 +131,7 @@ aside {
   display: flex;
   flex-direction: row;
 }
-
-.main {
+.content-page {
   width: 100%;
 }
 .button {
@@ -161,6 +146,3 @@ aside {
   width: 400px;
 }
 
-.full-width {
-  transition: transform 1s ease-out;
-}

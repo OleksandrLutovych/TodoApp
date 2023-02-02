@@ -1,18 +1,19 @@
-import * as React from 'react';
-import Switch from '@mui/material/Switch';
+import * as React from "react";
+import Switch from "@mui/material/Switch";
 
-export default function ControlledSwitches(props: any) {
-  const [checked, setChecked] = React.useState(true);
+interface INightmodeToggleProps {
+  checked: boolean;
+  onChange: () => void;
+}
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setChecked(event.target.checked);
-  };
+export default function NightmodeToogle(props: INightmodeToggleProps) {
+  const { checked, onChange } = props;
 
   return (
     <Switch
-      checked={props.checked}
-      onChange={props.onChange}
-      inputProps={{ 'aria-label': 'controlled' }}
+      checked={checked}
+      onChange={onChange}
+      inputProps={{ "aria-label": "controlled" }}
     />
   );
 }

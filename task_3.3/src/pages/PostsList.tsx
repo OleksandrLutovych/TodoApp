@@ -8,8 +8,8 @@ import ModalForm from "../components/UI/ModalForm";
 import Loader from "../components/UI/Loader";
 import { useForm } from "react-hook-form";
 import { IForm } from "../types/UITypes";
-import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { postFormValidationSchema } from "../validation/formValidationSchema";
 
 const PostsList: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -25,11 +25,6 @@ const PostsList: React.FC = () => {
     reset();
   };
 
-  const validationSchema = yup.object().shape({
-    title: yup.string().required("Title field is required"),
-    body: yup.string().required("Body field is required"),
-  });
-
   const {
     handleSubmit,
     register,
@@ -39,13 +34,12 @@ const PostsList: React.FC = () => {
     defaultValues: {
       title: "",
       body: "",
-      // date: ''
     },
-    resolver: yupResolver(validationSchema),
+    resolver: yupResolver(postFormValidationSchema),
   });
 
   const submitForm = (data: IForm) => {
-    console.log(data)
+    console.log(data);
     dispatch(addfetchPosts(data));
     reset();
     modalClose();
@@ -53,7 +47,7 @@ const PostsList: React.FC = () => {
 
   return (
     <>
-      <div className="subNav">
+      <div className={classes.pageHeader}>
         <h2>Posts List</h2>
         <ModalForm
           modalOpen={modalOpen}

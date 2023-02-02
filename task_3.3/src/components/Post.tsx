@@ -9,21 +9,15 @@ const Post = ({ posts }: PostsProps) => {
   return (
     <div className={classes.post_item}>
       <div className={classes.post_item_content}>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <p className="">
+        <div className={classes.postItemsBox}>
+          <p>
             <b>Title: </b>
             {posts.title}
           </p>
           {posts.date}
         </div>
 
-        <p className="">
+        <p>
           <b>Body: </b>
           {posts.body}
         </p>
