@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import TodoTask from "../components/TodoTask";
 import Button from "../components/UI/Button";
-import classes from "../components/Todo.module.scss";
+import classes from "../styles/Todo.module.scss";
 import { useAppSelector, useAppDispatch } from "../reducers/hook";
 import { addTodo, editTodoState, fetchTodos } from "../reducers/TodoReducer";
 import { ITodoApi } from "../types/redux.types";
@@ -31,8 +31,8 @@ const Todo: React.FC = () => {
   };
 
   return (
-    <div className="main">
-      <div className="subNav">
+    <>
+      <div className={classes.pageHeader}>
         <h2>Todo List</h2>
         <Button>+ Add New Todo</Button>
       </div>
@@ -42,11 +42,7 @@ const Todo: React.FC = () => {
           placeholder="Create task"
           className={classes.input}
           value={todoText}
-          onChange={(e) => {
-            if (e.target.value.trim()) {
-              setTodoText(e.target.value);
-            }
-          }}
+          onChange={(e) => setTodoText(e.target.value)}
         />
         <div>
           <Button onClick={createTodo}>Create task</Button>
@@ -66,9 +62,8 @@ const Todo: React.FC = () => {
       </div>
       <div className={classes.todoFooter}>
         <p>{todo.length} items</p>
-        <Button>Clear Items</Button>
       </div>
-    </div>
+    </>
   );
 };
 

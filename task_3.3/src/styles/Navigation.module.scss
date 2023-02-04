@@ -1,0 +1,78 @@
+@import "./colors";
+
+.mainLogo {
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  border: none;
+  font-size: 25px;
+}
+.logoText {
+  font-weight: 600;
+  margin-left: 10px;
+}
+.navItem {
+  color: $nav-button;
+  font-size: 18px;
+  font-weight: 400;
+  padding: 10px 90px 10px 25px;
+  width: 100%;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  &:hover {
+    transition: .5s;
+    text-decoration: none;
+    color: white;
+    background-color: $nav-button-hover;
+  }
+}
+.navBtnBox {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  list-style: none;
+  padding: 0;
+  margin-top: 60px;
+}
+
+.border {
+  margin-top: 20px;
+  display: block;
+  border-bottom: 1px solid $border-color;
+}
+.navItemText {
+  margin-left: 10px;
+}
+.nightMode {
+  font-size: 10px;
+  background-color: rgba(62, 62, 62, 0.393);
+  margin: 10px 25px;
+  padding: 5px 45px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.toggleMenu {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  color: $nav-button;
+  font-weight: 300;
+  background-color: transparent;
+  margin-top: 20px;
+  cursor: pointer;
+  border: none;
+  padding: 10px 15px 10px 25px;
+  border-radius: 5px;
+  &:hover {
+    background-color: $border-color;
+    border-top-left-radius: 0%;
+    border-bottom-left-radius: 0%;
+  }
+  svg {
+    margin-right: 10px;
+  }
+}

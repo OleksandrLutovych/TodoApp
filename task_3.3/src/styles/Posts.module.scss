@@ -1,0 +1,31 @@
+@import "./colors";
+
+.post_item {
+  border-bottom: 1px solid $border-color;
+  &_content {
+    margin-left: 10px;
+  }
+}
+.pageBody {
+  width: 100%;
+}
+.pageHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 74px;
+    padding: 0 20px;
+    border-bottom: 1px solid rgba(173, 173, 173, 0.204);
+    background-color: $lighter-dark;
+}
+
+.postsContainer {
+  padding: 0 20px;
+}
+
+.postItemsBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

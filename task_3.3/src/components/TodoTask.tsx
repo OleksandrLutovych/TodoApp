@@ -1,5 +1,5 @@
 import Button from "./UI/Button";
-import classes from "./Todo.module.scss";
+import classes from "../styles/Todo.module.scss";
 import { ITodoApi } from "../types/redux.types";
 import React, { useState } from "react";
 import { useAppDispatch } from "../reducers/hook";

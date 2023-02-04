@@ -13,6 +13,8 @@ export interface ITodoState {
 
 export interface IPostsState {
   posts: Array<IPost>;
+  loading: boolean;
+  error: string | null
 }
 
 export interface IUsersState {
