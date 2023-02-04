@@ -5,14 +5,6 @@ import classes from "../styles/Todo.module.scss";
 import { useAppSelector, useAppDispatch } from "../reducers/hook";
 import { addTodo, editTodoState, fetchTodos } from "../reducers/TodoReducer";
 import { ITodoApi } from "../types/redux.types";
-import ModalForm from "../components/UI/ModalForm";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { todoValidationSchema } from "../validation/formValidationSchema";
-
-type ITodoForm = {
-  title: string
-}
 
 const Todo: React.FC = () => {
   const todo = useAppSelector((state) => state.todo.todo);
@@ -36,32 +28,6 @@ const Todo: React.FC = () => {
     const [todoEditItem] = todo.filter((item) => item.id === id);
     const editTodo = [text, todoEditItem];
     dispatch(editTodoState(editTodo));
-  };
-
-  const [modalState, setModalState] = useState(false);
-  const modalOpen = () => setModalState(true);
-  const modalClose = () => {
-    setModalState(false);
-    reset();
-  };
-
-  const {
-    handleSubmit,
-    register,
-    formState: { errors },
-    reset,
-  } = useForm<ITodoForm>({
-    defaultValues: {
-      title: "",
-    },
-    resolver: yupResolver(todoValidationSchema),
-  });
-
-  const submitForm = (data: ITodoForm) => {
-    console.log(data);
-    // dispatch(addfetchPosts(data));
-    reset();
-    modalClose();
   };
 
   return (
@@ -96,17 +62,6 @@ const Todo: React.FC = () => {
       </div>
       <div className={classes.todoFooter}>
         <p>{todo.length} items</p>
-        {/* <ModalForm
-          modalOpen={modalOpen}
-          modalClose={modalClose}
-          modalState={modalState}
-          btnText="+ Add New Todo"
-          formTitle="Add New Todo"
-          handleSubmit={handleSubmit}
-          submitForm={submitForm}
-          register={register}
-          errors={errors}
-        /> */}
       </div>
     </>
   );
