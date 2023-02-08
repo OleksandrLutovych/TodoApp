@@ -10,6 +10,9 @@ export interface IForm {
   body: string;
   date?: string
 }
+export interface ITodoForm {
+  todo: string
+}
 export interface IModalFormProps {
   btnText: string;
   formTitle: string;

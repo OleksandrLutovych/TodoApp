@@ -6,5 +6,5 @@ export const postFormValidationSchema = yup.object().shape({
 });
 
 export const todoValidationSchema = yup.object().shape({
-  title: yup.string().trim().required('Title field is required')
+  todo: yup.string().trim().required('Title field is required')
 })

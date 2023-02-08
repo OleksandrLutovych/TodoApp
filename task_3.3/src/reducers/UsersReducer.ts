@@ -8,22 +8,19 @@ const initialState: IUsersState = {
   error: null,
 };
 
-
-export const fetchUsers = createAsyncThunk<IUser[], undefined, {rejectValue: string}>(
-  "users/fetchUsers",
-  async (_, { rejectWithValue }) => {
-    try {
-      const response = await fetch(
-        "https://jsonplaceholder.typicode.com/users"
-      );
-      const data = await response.json();
-      return data;
-    } catch (error: any) {
-      console.log(rejectWithValue(error))
-      return rejectWithValue('Server error!')
-    }
+export const fetchUsers = createAsyncThunk<
+  IUser[],
+  undefined,
+  { rejectValue: string }
+>("users/fetchUsers", async (_, { rejectWithValue }) => {
+  try {
+    const response = await fetch("https://jsonplaceholder.typicode.com/users");
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    return rejectWithValue("Server error!");
   }
-);
+});
 
 export const usersSlice = createSlice({
   name: "users",
