@@ -7,9 +7,6 @@ import classes from "../styles/User.module.scss";
 import { Link } from "react-router-dom";
 
 const UsersList: React.FC = () => {
-
-
-
   const dispatch = useAppDispatch();
   const users = useAppSelector((state) => state.users.users);
 
@@ -28,7 +25,6 @@ const UsersList: React.FC = () => {
             to={`/userslist/user/${user.id}`}
             className={classes.userBox}
             key={user.id}
-            onClick={()=> console.log(user.id)}
           >
             <User user={user} />
           </Link>

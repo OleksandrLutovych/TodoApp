@@ -67,6 +67,7 @@
   border: none;
   padding: 10px 15px 10px 25px;
   border-radius: 5px;
+  transition: .3s;
   &:hover {
     background-color: $border-color;
     border-top-left-radius: 0%;
