@@ -28,7 +28,7 @@ const App = () => {
           <Route path="/userslist" element={<UsersList />} />
           <Route path="/todo" element={<Todo />} />
           <Route path="/userslist/user/:id/" element={<UserInfo />}>
-            <Route path=":section" element={<UserTabsContent />} />
+            <Route path=":section" />
           </Route>
         </Routes>
         {isMenuHidden && (

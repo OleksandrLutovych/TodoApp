@@ -1,6 +1,7 @@
-import { useState } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, Outlet, useParams } from "react-router-dom";
 import classes from "../styles/Usertabs.module.scss";
+import UserTabsContent from "./UserTabsContent";
 
 interface IUserTabsProps {
   id: string | undefined;
@@ -9,7 +10,17 @@ interface IUserTabsProps {
 const UserTabs = (props: IUserTabsProps) => {
   const { id } = props;
 
-  const [activeTabs, setActiveTabs] = useState("about");
+  const { section = 'albums' } = useParams();
+  const [data, setData] = useState([]);
+console.log(section)
+
+  useEffect(() => {
+    fetch(`https://jsonplaceholder.typicode.com/users/${id}/${section}`)
+      .then((respone) => respone.json())
+      .then((data) => setData(data));
+  }, [section]);
+
+  const [activeTabs, setActiveTabs] = useState("albums");
   const tabsNavBtnsArr = [
     {
       className:
@@ -59,7 +70,10 @@ const UserTabs = (props: IUserTabsProps) => {
           ))}
         </div>
         <div className={classes.content}>
-          <Outlet />
+          {/* {activeTabs === "albums" && <UserTabsContent data={data} section={section}/>}
+          <UserTabsContent data={data} section={section}/> */}
+          {/* <Outlet /> */}
+          <UserTabsContent data={data} section={section}/>
         </div>
       </div>
     </>
