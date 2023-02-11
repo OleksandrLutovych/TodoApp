@@ -1,7 +1,6 @@
-import React from "react";
 import classes from "../styles//User.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {IconDefinition } from "@fortawesome/free-solid-svg-icons";
+import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 
 interface IUserDataProps {
   userData: string;

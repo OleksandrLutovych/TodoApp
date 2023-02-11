@@ -2,7 +2,7 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Button from "./Button";
-import classes from "./Form.module.scss";
+import classes from "../../styles/Form.module.scss";
 import { IModalFormProps } from "../../types/UITypes";
 import { useState } from "react";
 

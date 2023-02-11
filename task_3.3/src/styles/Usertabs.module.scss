@@ -1,0 +1,29 @@
+@import "./src/styles/_colors";
+
+.userTabs {
+  width: max-content;
+  margin-left: 20px;
+}
+
+.tabsNav {
+  display: flex;
+  border-bottom: 1px solid $white;
+  align-items: center;
+}
+
+.tabsBtn {
+  display: block;
+  padding: 5px 15px;
+  transition: 0.2s;
+  font-size: 25px;
+  text-decoration: none;
+  text-align: center;
+  &:hover {
+    background-color: $button-hover;
+    text-decoration: none;
+  }
+}
+
+.active {
+  background-color: $button;
+}

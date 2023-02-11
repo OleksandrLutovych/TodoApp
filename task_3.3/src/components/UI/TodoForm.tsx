@@ -1,8 +1,7 @@
-import * as React from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Button from "./Button";
-import classes from "./Form.module.scss";
+import classes from "../../styles/Form.module.scss";
 import { useState } from "react";
 
 const style = {
@@ -26,7 +25,6 @@ const TodoForm = (props: any) => {
     modalClose,
   } = props;
 
-  const [checkboxState, setCheckboxState] = useState(false);
   const invalidAreaBorderColor = {
     border: "1px solid red",
   };
@@ -43,34 +41,18 @@ const TodoForm = (props: any) => {
         <Box sx={style}>
           <form onSubmit={handleSubmit(submitForm)} className={classes.formBox}>
             <span className={classes.formTitle}>{formTitle}</span>
-            {/* <label className={classes.dateInput}>
-              <input
-                type="checkbox"
-                style={{ marginRight: "10px" }}
-                checked={checkboxState}
-                onChange={() => setCheckboxState((prev) => !prev)}
-              />
-              Add date
-            </label> */}
+
             <label htmlFor="">
               Task name
               <input
                 placeholder="e.g. Sunt aut facere repellat"
-                {...register("todo", {
-                //   required: true,
-                })}
+                {...register("todo", {})}
                 style={errors.title && invalidAreaBorderColor}
               />
               {errors.title && (
                 <p className={classes.validateMsg}>{errors.title.message}</p>
               )}
             </label>
-            {/* {checkboxState && (
-              <label>
-                Add post date
-                <input type="date" {...register("date")} />
-              </label>
-            )} */}
             <input
               type="submit"
               value={"Create Todo"}

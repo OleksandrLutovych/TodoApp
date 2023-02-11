@@ -11,9 +11,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useEffect } from "react";
 import { fetchUsers } from "../reducers/UsersReducer";
-import UserTabs from "./UserTabs";
 
-const UserInfo: React.FC = () => {
+const AboutUser: React.FC = () => {
   const { id } = useParams();
 
   const dispatch = useAppDispatch();
@@ -26,9 +25,6 @@ const UserInfo: React.FC = () => {
 
   return (
     <>
-      <div className={classes.pageHeader}>
-        <h2>Users List</h2>
-      </div>
       {targetUser ? (
         <div className={classes.userInfoWrapper}>
           <UserDetailedData
@@ -64,11 +60,8 @@ const UserInfo: React.FC = () => {
           userDataInfo={""}
         />
       )}
-      <div className={classes.userTabs}>
-        <UserTabs id={id}/>
-      </div>
     </>
   );
 };
 
-export default UserInfo;
+export default AboutUser;
