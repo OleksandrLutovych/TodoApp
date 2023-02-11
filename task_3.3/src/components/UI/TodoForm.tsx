@@ -1,9 +1,7 @@
-import * as React from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Button from "./Button";
 import classes from "../../styles/Form.module.scss";
-import { IModalFormProps } from "../../types/UITypes";
 import { useState } from "react";
 
 const style = {
@@ -15,7 +13,7 @@ const style = {
   boxShadow: 24,
 };
 
-const ModalForm = (props: IModalFormProps) => {
+const TodoForm = (props: any) => {
   const {
     formTitle,
     handleSubmit,
@@ -27,7 +25,6 @@ const ModalForm = (props: IModalFormProps) => {
     modalClose,
   } = props;
 
-  const [checkboxState, setCheckboxState] = useState(false);
   const invalidAreaBorderColor = {
     border: "1px solid red",
   };
@@ -44,48 +41,21 @@ const ModalForm = (props: IModalFormProps) => {
         <Box sx={style}>
           <form onSubmit={handleSubmit(submitForm)} className={classes.formBox}>
             <span className={classes.formTitle}>{formTitle}</span>
-            <label className={classes.dateInput}>
-              <input
-                type="checkbox"
-                style={{ marginRight: "10px" }}
-                checked={checkboxState}
-                onChange={() => setCheckboxState((prev) => !prev)}
-              />
-              Add date
-            </label>
+
             <label htmlFor="">
-              Title
+              Task name
               <input
                 placeholder="e.g. Sunt aut facere repellat"
-                {...register("title", {
-                  required: true,
-                })}
+                {...register("todo", {})}
                 style={errors.title && invalidAreaBorderColor}
               />
               {errors.title && (
                 <p className={classes.validateMsg}>{errors.title.message}</p>
               )}
             </label>
-            <label htmlFor="">Body</label>
-            <input
-              placeholder="e.g. Recusandae consequuntur expedita"
-              {...register("body", {
-                required: true,
-              })}
-              style={errors.body && invalidAreaBorderColor}
-            />
-            {errors.body && (
-              <p className={classes.validateMsg}>{errors.body.message}</p>
-            )}
-            {checkboxState && (
-              <label>
-                Add post date
-                <input type="date" {...register("date")} />
-              </label>
-            )}
             <input
               type="submit"
-              value={"Create Post"}
+              value={"Create Todo"}
               className={classes.submitBtn}
             />
           </form>
@@ -94,4 +64,4 @@ const ModalForm = (props: IModalFormProps) => {
     </div>
   );
 };
-export default ModalForm;
+export default TodoForm;

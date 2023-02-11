@@ -31,8 +31,8 @@ const TodoTask: React.FC<ITodoTaskProps> = (props): JSX.Element => {
       <div className={classes.todoItem__elements}>
         <input
           type="checkbox"
-          defaultChecked={completed}
-          onChange={() => dispatch(completedTodo({id}))}
+          checked={completed}
+          onChange={() => dispatch(completedTodo({ id }))}
         />
         {isEdit ? (
           <form onSubmit={handleBtnClick}>
@@ -47,7 +47,7 @@ const TodoTask: React.FC<ITodoTaskProps> = (props): JSX.Element => {
             />
           </form>
         ) : (
-          <span>{todoEditText}</span>
+          <span className={classes.todoText}>{todoEditText}</span>
         )}
       </div>
 

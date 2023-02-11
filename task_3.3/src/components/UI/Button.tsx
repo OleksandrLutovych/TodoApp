@@ -1,4 +1,4 @@
-import clasess from "./Button.module.scss";
+import clasess from "../../styles/Button.module.scss";
 
 const Button = (props: any) => {
   return (

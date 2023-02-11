@@ -8,7 +8,10 @@ import {
 export interface IForm {
   title: string;
   body: string;
-  date?: string
+  date?: string;
+}
+export interface ITodoForm {
+  todo: string;
 }
 export interface IModalFormProps {
   btnText: string;

@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
 import TodoTask from "../components/TodoTask";
-import Button from "../components/UI/Button";
 import classes from "../styles/Todo.module.scss";
 import { useAppSelector, useAppDispatch } from "../reducers/hook";
 import { addTodo, editTodoState, fetchTodos } from "../reducers/TodoReducer";
 import { ITodoApi } from "../types/redux.types";
+import TodoForm from "../components/UI/TodoForm";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
+import { ITodoForm } from "../types/UITypes";
+import { todoValidationSchema } from "../validation/formValidationSchema";
 
 const Todo: React.FC = () => {
   const todo = useAppSelector((state) => state.todo.todo);
@@ -30,35 +34,79 @@ const Todo: React.FC = () => {
     dispatch(editTodoState(editTodo));
   };
 
+  const [modalState, setModalState] = useState(false);
+  const modalOpen = () => setModalState(true);
+  const modalClose = () => {
+    setModalState(false);
+    reset();
+  };
+
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+    reset,
+  } = useForm<ITodoForm>({
+    defaultValues: {
+      todo: "",
+    },
+    resolver: yupResolver(todoValidationSchema),
+  });
+
+  const submitForm = (data: ITodoForm) => {
+    console.log(data);
+    dispatch(addTodo(data.todo));
+    reset();
+    modalClose();
+  };
+
   return (
     <>
       <div className={classes.pageHeader}>
         <h2>Todo List</h2>
-        <Button>+ Add New Todo</Button>
-      </div>
-      <form className={classes.form}>
-        <input
-          type="text"
-          placeholder="Create task"
-          className={classes.input}
-          value={todoText}
-          onChange={(e) => setTodoText(e.target.value)}
+        <TodoForm
+          modalOpen={modalOpen}
+          modalClose={modalClose}
+          modalState={modalState}
+          btnText="+ Add New Todo"
+          formTitle="Add New Task"
+          handleSubmit={handleSubmit}
+          submitForm={submitForm}
+          register={register}
+          errors={errors}
         />
-        <div>
-          <Button onClick={createTodo}>Create task</Button>
+      </div>
+      <div className={classes.todoPage}>
+        <div className={classes.todoContainer}>
+          <h3>Todo</h3>
+          {todo.map(
+            (item: ITodoApi) =>
+              !item.completed && (
+                <TodoTask
+                  key={item.id}
+                  completed={item.completed && true}
+                  title={item.title}
+                  id={item.id}
+                  setEditState={setEditState}
+                />
+              )
+          )}
         </div>
-      </form>
-      <div className={classes.todoContainer}>
-        <h3>Tasks</h3>
-        {todo.map((item: ITodoApi) => (
-          <TodoTask
-            key={item.id}
-            completed={item.completed && true}
-            title={item.title}
-            id={item.id}
-            setEditState={setEditState}
-          />
-        ))}
+        <div className={classes.todoContainer}>
+          <h3>Done</h3>
+          {todo.map(
+            (item: ITodoApi) =>
+              item.completed && (
+                <TodoTask
+                  key={item.id}
+                  completed={item.completed}
+                  title={item.title}
+                  id={item.id}
+                  setEditState={setEditState}
+                />
+              )
+          )}
+        </div>
       </div>
       <div className={classes.todoFooter}>
         <p>{todo.length} items</p>
