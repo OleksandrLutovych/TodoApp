@@ -67,7 +67,12 @@ const PostsList: React.FC = () => {
       ) : (
         <div className={classes.postsContainer}>
           {postsState.posts.map((post: IPost) => (
-            <Post posts={post} key={post.id} />
+            <Post
+              title={post.title}
+              body={post.body}
+              date={post.date}
+              key={post.id}
+            />
           ))}
         </div>
       )}

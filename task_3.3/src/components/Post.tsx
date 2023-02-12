@@ -1,26 +1,28 @@
 import { IPost } from "../types/postsType";
 import classes from "../styles/Posts.module.scss";
+import { Link } from "react-router-dom";
 
 interface PostsProps {
-  posts: IPost;
+  body: string;
+  title?: string;
+  date?: string;
 }
 
-const Post = ({ posts }: PostsProps) => {
+const Post = (props: PostsProps) => {
+  const { title, body, date } = props;
   return (
     <div className={classes.post_item}>
       <div className={classes.post_item_content}>
         <div className={classes.postItemsBox}>
-          <p>
-            <b>Title: </b>
-            {posts.title}
-          </p>
-          {posts.date}
+          {title && (
+            <Link to={"/"} className={classes.postTitle}>
+              {title}
+            </Link>
+          )}
+          {date ? <span>{date}</span> : <span>just now</span>}
         </div>
 
-        <p>
-          <b>Body: </b>
-          {posts.body}
-        </p>
+        <span className={classes.postBody}>{body}</span>
       </div>
     </div>
   );

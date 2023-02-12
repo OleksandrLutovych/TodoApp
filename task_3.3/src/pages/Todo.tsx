@@ -78,7 +78,7 @@ const Todo: React.FC = () => {
       </div>
       <div className={classes.todoPage}>
         <div className={classes.todoContainer}>
-          <h3>Todo</h3>
+          <h3>Active</h3>
           {todo.map(
             (item: ITodoApi) =>
               !item.completed && (

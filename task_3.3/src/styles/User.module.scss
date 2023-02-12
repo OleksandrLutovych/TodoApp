@@ -9,6 +9,10 @@
   padding: 0 20px;
   border-bottom: 1px solid rgba(173, 173, 173, 0.204);
 }
+.userPageMain {
+  display: flex;
+  padding: 20px;
+}
 
 .userBox {
   display: flex;
@@ -19,11 +23,25 @@
   cursor: pointer;
   text-decoration: none;
   transition: 0.3s;
+  background-color: $lighter-dark;
+
   &:hover {
-    background-color: $lighter-dark;
-    border-radius: 10px;
+    background-color: $border-color;
     text-decoration: none;
   }
+}
+
+.topNavBox {
+  padding: 0px 25px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  border-bottom: 1px solid $border-color;
+}
+.topNavElement {
+  padding: 10px 0;
+  font-size: 20px;
+  border-bottom: 5px solid $border-color;
 }
 
 .usersContainer {
@@ -47,5 +65,96 @@
 }
 
 .userTabs {
-  width: max-content;
+  width: 100%;
+  margin-left: 20px;
+}
+
+.userWrapper {
+  width: 100%;
+  display: flex;
+  margin: 0 20px;
+  justify-content: space-between;
+  align-items: center;
+  span {
+    margin: 0 15px;
+  }
+}
+
+.userMainInfo {
+  display: flex;
+  width: 25vw;
+  align-items: center;
+  img {
+    border-radius: 50%;
+  }
+}
+.usernameBox {
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
+}
+.userPhoto {
+  width: 70px;
+  height: 70px;
+}
+.deleteUser {
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  font-size: 18px;
+  :hover {
+    color: rgb(255, 0, 0);
+  }
+}
+
+.otherInfo {
+  opacity: 0.8;
+}
+.userNickname {
+  font-style: italic;
+  opacity: 0.5;
+}
+
+// ------ UserPage
+
+.userAsideWrapper {
+  width: 550px;
+  border: 1px solid $border-color;
+  border-radius: 10px;
+  height: max-content;
+  &_header {
+    border-bottom: 1px solid $border-color;
+  }
+}
+.headerDecoration {
+  background: url("https://bootdey.com/img/Content/bg1.jpg");
+  background-size: cover;
+  height: 80px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+.headerInfo {
+  height: 80px;
+  margin: 0 30px;
+  display: flex;
+  img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    padding: 5px;
+    background-color: $dark;
+    transform: translateY(-50px);
+  }
+}
+.userAsideInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 5px 25px;
+  font-size: 20px;
+  span + span {
+    opacity: .5;
+    font-size: 16px;
+    font-style: italic;
+  }
 }
