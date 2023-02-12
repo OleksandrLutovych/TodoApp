@@ -1,7 +1,5 @@
 import { IUser } from "../types/usersTypes";
 import classes from "../styles//User.module.scss";
-import { Link, Outlet } from "react-router-dom";
-import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEnvelope,

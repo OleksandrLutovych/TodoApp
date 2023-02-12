@@ -78,6 +78,13 @@ form {
     background-color: $lighter-dark;
   }
 }
+.editBtn {
+  color: $button;
+  cursor: pointer; 
+  &:hover {
+    color: $button-hover;
+  }
+}
 
 .todoFooter {
   padding: 0 20px;

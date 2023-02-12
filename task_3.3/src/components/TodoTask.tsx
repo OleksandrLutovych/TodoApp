@@ -4,6 +4,8 @@ import { ITodoApi } from "../types/redux.types";
 import React, { useState } from "react";
 import { useAppDispatch } from "../reducers/hook";
 import { removeTodo, completedTodo } from "../reducers/TodoReducer";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPen } from "@fortawesome/free-solid-svg-icons";
 
 export interface ITodoTaskProps extends ITodoApi {
   setEditState: (id: string, todoText: string) => void;
@@ -55,7 +57,8 @@ const TodoTask: React.FC<ITodoTaskProps> = (props): JSX.Element => {
         {isEdit ? (
           <Button onClick={handleBtnClick}>Enter</Button>
         ) : (
-          <Button onClick={editToggle}>Edit</Button>
+          // <Button onClick={editToggle}>Edit</Button>
+          <FontAwesomeIcon icon={faPen} onClick={editToggle} className={classes.editBtn}/>
         )}
 
         <button

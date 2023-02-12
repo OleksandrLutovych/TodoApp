@@ -10,9 +10,9 @@ interface IUserTabsProps {
 const UserTabs = (props: IUserTabsProps) => {
   const { id } = props;
 
-  const { section = 'albums' } = useParams();
+  const { section = "albums" } = useParams();
   const [data, setData] = useState([]);
-console.log(section)
+  console.log(section);
 
   useEffect(() => {
     fetch(`https://jsonplaceholder.typicode.com/users/${id}/${section}`)
@@ -56,25 +56,20 @@ console.log(section)
 
   return (
     <>
-      <div className={classes.userTabs}>
-        <div className={classes.tabsNav}>
-          {tabsNavBtnsArr.map((btn) => (
-            <Link
-              key={btn.key}
-              className={btn.className}
-              to={btn.path}
-              onClick={btn.onClick}
-            >
-              {btn.name}
-            </Link>
-          ))}
-        </div>
-        <div className={classes.content}>
-          {/* {activeTabs === "albums" && <UserTabsContent data={data} section={section}/>}
-          <UserTabsContent data={data} section={section}/> */}
-          {/* <Outlet /> */}
-          <UserTabsContent data={data} section={section}/>
-        </div>
+      <div className={classes.tabsNav}>
+        {tabsNavBtnsArr.map((btn) => (
+          <Link
+            key={btn.key}
+            className={btn.className}
+            to={btn.path}
+            onClick={btn.onClick}
+          >
+            {btn.name}
+          </Link>
+        ))}
+      </div>
+      <div className={classes.content}>
+        <UserTabsContent data={data} section={section} />
       </div>
     </>
   );

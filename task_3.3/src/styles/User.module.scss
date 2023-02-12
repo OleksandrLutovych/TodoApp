@@ -9,6 +9,10 @@
   padding: 0 20px;
   border-bottom: 1px solid rgba(173, 173, 173, 0.204);
 }
+.userPageMain {
+  display: flex;
+  padding: 20px;
+}
 
 .userBox {
   display: flex;
@@ -61,7 +65,8 @@
 }
 
 .userTabs {
-  width: max-content;
+  width: 100%;
+  margin-left: 20px;
 }
 
 .userWrapper {
@@ -107,5 +112,49 @@
 }
 .userNickname {
   font-style: italic;
-  opacity: .5;
+  opacity: 0.5;
+}
+
+// ------ UserPage
+
+.userAsideWrapper {
+  width: 550px;
+  border: 1px solid $border-color;
+  border-radius: 10px;
+  height: max-content;
+  &_header {
+    border-bottom: 1px solid $border-color;
+  }
+}
+.headerDecoration {
+  background: url("https://bootdey.com/img/Content/bg1.jpg");
+  background-size: cover;
+  height: 80px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+.headerInfo {
+  height: 80px;
+  margin: 0 30px;
+  display: flex;
+  img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    padding: 5px;
+    background-color: $dark;
+    transform: translateY(-50px);
+  }
+}
+.userAsideInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 5px 25px;
+  font-size: 20px;
+  span + span {
+    opacity: .5;
+    font-size: 16px;
+    font-style: italic;
+  }
 }

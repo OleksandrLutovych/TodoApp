@@ -24,19 +24,19 @@ const UserTabsContent = (props: IUserTabsContentProps) => {
             {section === "posts" &&
               data.map((item: IPost | Albums | ITodoApi) => {
                 if (item.hasOwnProperty("title")) {
-                  return <UsersExtraData dataText={item.title} key={item.id} />;
+                  return <UsersExtraData body={item.title} key={item.id} />;
                 }
               })}
             {section === "albums" &&
               data.map((item: IPost | Albums | ITodoApi) => {
                 if (item.hasOwnProperty("title")) {
-                  return <UsersExtraData dataText={item.title} key={item.id} />;
+                  return <UsersExtraData body={item.title} key={item.id} />;
                 }
               })}
             {section === "todos" &&
               data.map((item: IPost | Albums | ITodoApi) => {
                 if (item.hasOwnProperty("title")) {
-                  return <UsersExtraData dataText={item.title} key={item.id} />;
+                  return <UsersExtraData body={item.title} key={item.id} />;
                 }
               })}
           </ul>

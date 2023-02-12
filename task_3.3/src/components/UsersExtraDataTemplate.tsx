@@ -1,14 +1,17 @@
 import React from 'react';
+import Post from './Post';
 
 interface IExtraDataProps {
-    dataText: string,
+    body: string
 }
 
 const UsersExtraData = (props: IExtraDataProps) => {
-    const {dataText} = props
+    const {body} = props
     return (
         <div>
-            <li>{dataText}</li>
+            <Post
+              body={body}
+            />
         </div> 
     );
 };
