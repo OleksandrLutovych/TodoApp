@@ -19,11 +19,25 @@
   cursor: pointer;
   text-decoration: none;
   transition: 0.3s;
+  background-color: $lighter-dark;
+
   &:hover {
-    background-color: $lighter-dark;
-    border-radius: 10px;
+    background-color: $border-color;
     text-decoration: none;
   }
+}
+
+.topNavBox {
+  padding: 0px 25px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  border-bottom: 1px solid $border-color;
+}
+.topNavElement {
+  padding: 10px 0;
+  font-size: 20px;
+  border-bottom: 5px solid $border-color;
 }
 
 .usersContainer {
@@ -48,4 +62,50 @@
 
 .userTabs {
   width: max-content;
+}
+
+.userWrapper {
+  width: 100%;
+  display: flex;
+  margin: 0 20px;
+  justify-content: space-between;
+  align-items: center;
+  span {
+    margin: 0 15px;
+  }
+}
+
+.userMainInfo {
+  display: flex;
+  width: 25vw;
+  align-items: center;
+  img {
+    border-radius: 50%;
+  }
+}
+.usernameBox {
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
+}
+.userPhoto {
+  width: 70px;
+  height: 70px;
+}
+.deleteUser {
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  font-size: 18px;
+  :hover {
+    color: rgb(255, 0, 0);
+  }
+}
+
+.otherInfo {
+  opacity: 0.8;
+}
+.userNickname {
+  font-style: italic;
+  opacity: .5;
 }

@@ -20,6 +20,12 @@ const UsersList: React.FC = () => {
         <h2>Users List</h2>
       </div>
       <div className={classes.usersContainer}>
+        <div className={classes.topNavBox}>
+          <span className={classes.topNavElement}>Name</span>
+          <span className={classes.topNavElement}>Ardess</span>
+          <span className={classes.topNavElement}>Email</span>
+          <span className={classes.topNavElement}></span>
+        </div>
         {users.map((user: IUser) => (
           <Link
             to={`/userslist/user/${user.id}`}
